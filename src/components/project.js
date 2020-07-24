@@ -1,6 +1,6 @@
 let globalProjectId = 0;
 
-const Project = (id = (globalProjectId += 1), title, description) => {
+const Project = (title, description, id = (globalProjectId += 1)) => {
   const getId = () => id;
   const getTitle = () => title;
   const getDescription = () => description;

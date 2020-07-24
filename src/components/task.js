@@ -1,55 +1,58 @@
 let globalTaskId = 0;
 
 const task = (
-  taskTitle,
-  taskDescription,
-  taskDueDate,
-  taskPriority,
-  taskProject,
+  projectId,
+  title,
+  description,
+  dueDate,
+  priority = 'low',
+  id = (globalTaskId += 1),
 ) => {
-  const id = globalTaskId;
-  const projectId = taskProject;
-  let title = taskTitle;
-  let description = taskDescription;
-  let dueDate = taskDueDate;
-  let priority = taskPriority;
-  globalTaskId += 1;
+  const getId = () => id;
+  const getProjectId = () => projectId;
+  const getTitle = () => title;
+  const getDescription = () => description;
+  const getDueDate = () => dueDate;
+  const getPriority = () => priority;
+
   // getproject object
   // const getProject=()=>{write a function to search the project object}
-  const editTitle = (newTitle) => {
-    title = newTitle;
-  };
 
   // const filterbyDate=(date)=>{
   //   //date today()
   //   if date eq today
   //   taskarray.push(task)
-
   //   return rtaskaaraya
-
   // };
 
-  const editDescription = (newDescription) => {
-    description = newDescription;
+  const setProjectId = (value) => {
+    projectId = value;
   };
-  const editDueDate = (newDueDate) => {
-    dueDate = newDueDate;
+  const setTitle = (value) => {
+    title = value;
   };
-  const editPriority = (newPriority) => {
-    priority = newPriority;
+  const setDescription = (value) => {
+    description = value;
+  };
+  const setDueDate = (value) => {
+    dueDate = value;
+  };
+  const setPriority = (value) => {
+    priority = value;
   };
 
   return {
-    id,
-    projectId,
-    title,
-    description,
-    dueDate,
-    priority,
-    editDescription,
-    editTitle,
-    editDueDate,
-    editPriority,
+    getId,
+    getProjectId,
+    getDescription,
+    getTitle,
+    getDueDate,
+    getPriority,
+    setProjectId,
+    setDescription,
+    setTitle,
+    setDueDate,
+    setPriority,
   };
 };
 
