@@ -1,21 +1,25 @@
 let globalProjectId = 0;
 
-class Project {
-  constructor(projectTitle, projectDescription) {
-    this.id = globalProjectId;
-    this.title = projectTitle;
-    this.description = projectDescription;
-    globalProjectId += 1;
-  }
+const Project = (id = (globalProjectId += 1), title, description) => {
+  const getId = () => id;
+  const getTitle = () => title;
+  const getDescription = () => description;
 
-  get getTitle() { return this.title; }
+  const setTitle = (value) => {
+    title = value;
+  };
+  const setDescription = (value) => {
+    description = value;
+  };
 
-  get getDescription() { return this.description; }
-
-  set setTitle(value) { this.title = value; }
-
-  set setDescription(newDescription) { this.description = newDescription; }
-}
+  return {
+    getId,
+    getTitle,
+    getDescription,
+    setTitle,
+    setDescription,
+  };
+};
 
 // export default project;
 // exports.project = project;
