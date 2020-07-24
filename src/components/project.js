@@ -18,4 +18,6 @@ const project = (projectTitle, projectDescription) => {
   };
 };
 
-export default project;
+// export default project;
+// exports.project = project;
+module.exports = project;
