@@ -1,9 +1,11 @@
 let globalProjectId = 0;
 
 const Project = (title, description, id = (globalProjectId += 1)) => {
+  const tasks = [];
   const getId = () => id;
   const getTitle = () => title;
   const getDescription = () => description;
+  const getTasks = () => tasks;
 
   const setTitle = (value) => {
     title = value;
@@ -12,12 +14,18 @@ const Project = (title, description, id = (globalProjectId += 1)) => {
     description = value;
   };
 
+  const setTasks = (value) => {
+    tasks.push(value);
+  };
+
   return {
     getId,
     getTitle,
     getDescription,
+    getTasks,
     setTitle,
     setDescription,
+    setTasks,
   };
 };
 
