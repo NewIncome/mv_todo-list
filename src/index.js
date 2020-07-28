@@ -3,18 +3,19 @@
 
 const { projectController } = require('./controllers/project_controller');
 const { taskController } = require('./controllers/task_controller');
+// const saveToLocalStorage = require('./controllers/localstorage_controller');
 
 const firstProject = projectController.addProject(
   'Work',
-  'First projects description'
+  'First projects description',
 );
 const secondProject = projectController.addProject(
   'Frontend',
-  'Second projects description'
+  'Second projects description',
 );
 const thirdProject = projectController.addProject(
   'DevOps',
-  'Third projects description'
+  'Third projects description',
 );
 
 taskController.setProject(firstProject);
@@ -22,7 +23,7 @@ taskController.setProject(firstProject);
 const firstTask = taskController.addTask(
   '1stTask Title',
   'First jobs description',
-  new Date(),
+  new Date(2020, 6, 30),
   'high',
 );
 const secondTask = taskController.addTask(
@@ -60,7 +61,7 @@ if (
   projectController.editProject(
     firstProject.getId(),
     'Work',
-    'this is a edited description '
+    'this is a edited description ',
   )
 ) {
   console.log(`${firstProject.getTitle()} edited`);
@@ -91,8 +92,10 @@ const project = {
 // console.log(project);
 // console.log(JSON.stringify(project));
 // console.log(JSON.parse(JSON.stringify(project)));
-
+console.log(' ----- filterr by DATES ----- ');
+// console.log(taskController.filterByDate(new Date())[0].getTitle()); // today
 // console.log(taskController.filterByDate(taskController.getDateTomorrow())[0].getTitle());
+console.log(taskController.filterUpcoming()[0].getTitle()); // today
 
 if (taskController.editTask(firstTask.getId(), '1st Task Ever!', 'this is a edited description for this task', new Date(2020, 6, 30))) {
   console.log(`${firstTask.getTitle()} edited`);

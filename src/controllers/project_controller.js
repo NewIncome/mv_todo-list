@@ -1,4 +1,5 @@
 const Project = require('../components/project');
+const saveToLocalStorage = require('./localstorage_controller');
 
 const projectController = (() => {
   const projects = [];
@@ -6,17 +7,17 @@ const projectController = (() => {
   const addProject = (title, description) => {
     const newProject = Project(title, description);
     projects.push(newProject);
-    // save to local storage
+    saveToLocalStorage();
     return newProject;
   };
 
   const removeProject = (projectId) => {
     const index = projects.findIndex(
-      (project) => project.getId() === projectId
+      (project) => project.getId() === projectId,
     );
     if (index !== -1) {
       projects.splice(index, 1);
-      // save again to local storage
+      saveToLocalStorage();
     }
   };
 
@@ -32,7 +33,7 @@ const projectController = (() => {
     }
     project.setTitle(title || project.getTitle());
     project.setDescription(description || project.getDescription());
-    // save again to local storage
+    saveToLocalStorage();
     return true;
   };
 
@@ -40,6 +41,7 @@ const projectController = (() => {
     addProject,
     removeProject,
     editProject,
+    projects,
   };
 })();
 

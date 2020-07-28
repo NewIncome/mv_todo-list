@@ -1,4 +1,5 @@
 const Task = require('../components/task');
+const saveToLocalStorage = require('./localstorage_controller');
 
 const taskController = (() => {
   let project;
@@ -10,6 +11,7 @@ const taskController = (() => {
   const addTask = (title, description, dueDate, priority) => {
     const newTask = Task(title, description, dueDate, priority);
     project.setTasks(newTask);
+    saveToLocalStorage();
     return newTask;
   };
 
@@ -20,7 +22,7 @@ const taskController = (() => {
     if (taskIndex === -1) return false;
 
     project.getTasks().splice(taskIndex, 1);
-
+    saveToLocalStorage();
     return true;
   };
 
@@ -30,12 +32,18 @@ const taskController = (() => {
     return today;
   };
 
-  const filterByDate = (taskDate) => project.getTasks().filter(task => {
+  const filterToday = (taskDate) => project.getTasks().filter(task => {
     if (task.getDueDate().getYear() === taskDate.getYear()) {
       if (task.getDueDate().getMonth() === taskDate.getMonth()) {
         if (task.getDueDate().getDate() === taskDate.getDate()) return taskDate;
       }
     }
+    return false;
+  });
+
+  const filterUpcoming = () => project.getTasks().filter(task => {
+    const upcomingdate = new Date().setDate(new Date().getDate() + 1);
+    if (task.getDueDate() > upcomingdate) return task;
     return false;
   });
 
@@ -54,7 +62,7 @@ const taskController = (() => {
     project.setDescription(description || project.getDescription());
     project.setDueDate(dueDate || project.getDueDate());
     project.setPriority(priority || project.getPriority());
-    // save again to local storage
+    saveToLocalStorage();
     return true;
   };
 
@@ -70,7 +78,8 @@ const taskController = (() => {
     addTask,
     removeTask,
     setProject,
-    filterByDate,
+    filterUpcoming,
+    filterToday,
     getDateTomorrow,
     editTask,
   };
