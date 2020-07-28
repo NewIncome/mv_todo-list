@@ -24,30 +24,46 @@ const taskController = (() => {
     return true;
   };
 
-  const filterByDate = (taskDate) => {
-    const tasks = project
-      .getTasks()
-      .filter((task) => task.getDueDate() <= taskDate);
-    return tasks;
+  const getDateTomorrow = () => {
+    const today = new Date();
+    today.setDate(new Date().getDate() + 1);
+    return today;
   };
 
-  // const filterByDate = (taskDate) => allTasks.filter(task => {
-  //   if (task.getDueDate().getYear() === taskDate.getYear()) {
-  //     if (task.getDueDate().getMonth() === taskDate.getMonth()) {
-  //       if (task.getDueDate().getDate() === taskDate.getDate()) return taskDate;
-  //     }
-  //   }
-  //   return false;
-  // });
+  const filterByDate = (taskDate) => project.getTasks().filter(task => {
+    if (task.getDueDate().getYear() === taskDate.getYear()) {
+      if (task.getDueDate().getMonth() === taskDate.getMonth()) {
+        if (task.getDueDate().getDate() === taskDate.getDate()) return taskDate;
+      }
+    }
+    return false;
+  });
 
-/* 
+  const findTask = (taskId) => {
+    const foundTask = project.getTasks().find((elem) => elem.getId() === taskId);
+    return foundTask || false;
+  };
+
+  const editTask = (id, title, description, dueDate, priority) => {
+    const project = findTask(id);
+    if (!project) {
+      return false;
+    }
+    // project.setProjectId(); Maybe later...
+    project.setTitle(title || project.getTitle());
+    project.setDescription(description || project.getDescription());
+    project.setDueDate(dueDate || project.getDueDate());
+    project.setPriority(priority || project.getPriority());
+    // save again to local storage
+    return true;
+  };
+
+/*
 {
   "today":[{object tasks},{}],
   "tomorrow":[tasks array for tomorrow],
   "nextdays":[tasks array for nextdays],
-
 }
-
 */
 
   return {
@@ -55,6 +71,8 @@ const taskController = (() => {
     removeTask,
     setProject,
     filterByDate,
+    getDateTomorrow,
+    editTask,
   };
 })();
 

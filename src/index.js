@@ -23,12 +23,12 @@ const firstTask = taskController.addTask(
   '1stTask Title',
   'First jobs description',
   new Date(),
-  'high'
+  'high',
 );
 const secondTask = taskController.addTask(
   '2stTask Title ',
   'Second  jobs description for the first project',
-  new Date(2020, 6, 2)
+  new Date(2020, 6, 29),
 );
 // const thirdTask = taskController(firstProject).addTask(
 //   '2stTask Title ',
@@ -91,3 +91,12 @@ const project = {
 // console.log(project);
 // console.log(JSON.stringify(project));
 // console.log(JSON.parse(JSON.stringify(project)));
+
+// console.log(taskController.filterByDate(taskController.getDateTomorrow())[0].getTitle());
+
+if (taskController.editTask(firstTask.getId(), '1st Task Ever!', 'this is a edited description for this task', new Date(2020, 6, 30))) {
+  console.log(`${firstTask.getTitle()} edited`);
+  console.log(firstTask.getDescription());
+  console.log(firstTask.getDueDate());
+  console.log(firstTask.getPriority());
+}

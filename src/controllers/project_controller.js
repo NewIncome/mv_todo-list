@@ -31,7 +31,7 @@ const projectController = (() => {
       return false;
     }
     project.setTitle(title || project.getTitle());
-    project.setDescription(description || project.getTitle());
+    project.setDescription(description || project.getDescription());
     // save again to local storage
     return true;
   };
