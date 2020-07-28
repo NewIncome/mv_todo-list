@@ -31,6 +31,25 @@ const taskController = (() => {
     return tasks;
   };
 
+  // const filterByDate = (taskDate) => allTasks.filter(task => {
+  //   if (task.getDueDate().getYear() === taskDate.getYear()) {
+  //     if (task.getDueDate().getMonth() === taskDate.getMonth()) {
+  //       if (task.getDueDate().getDate() === taskDate.getDate()) return taskDate;
+  //     }
+  //   }
+  //   return false;
+  // });
+
+/* 
+{
+  "today":[{object tasks},{}],
+  "tomorrow":[tasks array for tomorrow],
+  "nextdays":[tasks array for nextdays],
+
+}
+
+*/
+
   return {
     addTask,
     removeTask,

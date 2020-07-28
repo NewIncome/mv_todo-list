@@ -6,6 +6,7 @@ const projectController = (() => {
   const addProject = (title, description) => {
     const newProject = Project(title, description);
     projects.push(newProject);
+    // save to local storage
     return newProject;
   };
 
@@ -13,14 +14,26 @@ const projectController = (() => {
     const index = projects.findIndex(
       (project) => project.getId() === projectId
     );
-    if (index !== -1) projects.splice(index, 1);
+    if (index !== -1) {
+      projects.splice(index, 1);
+      // save again to local storage
+    }
   };
 
-  const editProject = (project, property, value) => {
-    Object.keys(project).forEach((method, i) => {
-      if (method == `set${property}`) Object.values(project)[i](value);
-    });
-    // window[`get${property}`](value); // this works in browser JS only.
+  const findProject = (projectId) => {
+    const project = projects.find((elem) => elem.getId() === projectId);
+    return project || false;
+  };
+
+  const editProject = (id, title, description) => {
+    const project = findProject(id);
+    if (!project) {
+      return false;
+    }
+    project.setTitle(title || project.getTitle());
+    project.setDescription(description || project.getTitle());
+    // save again to local storage
+    return true;
   };
 
   return {
