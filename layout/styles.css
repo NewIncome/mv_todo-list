@@ -11,7 +11,6 @@ body {
   display: grid;
 }
 
-
 .projects {
   padding: 20px;
   position: fixed;
@@ -44,3 +43,50 @@ body {
 
 /* PROJECTS */
 
+.project-cards {
+  margin: 3rem 0;
+}
+
+.project-cards-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, auto));
+  font-weight: 600;
+}
+
+.project-cards-item {
+  height: 10rem;
+  padding: 1rem;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.remove-bottom {
+  border-bottom: 0;
+}
+
+.project-cards-item:nth-child(odd) {
+  border-right: 1px solid #f8f8f8;
+}
+
+.project-cards-item:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
+}
+
+.project-title {
+  font-size: 1rem;
+  color: #5e5e5e;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.project-subtitle {
+  font-size: 0.9rem;
+  color: #c6c6c6;
+  text-transform: uppercase;
+}
+
+#plus-icon {
+  width: 60%;
+}
