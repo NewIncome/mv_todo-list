@@ -4,7 +4,6 @@ body {
   font-family: 'Roboto', sans-serif;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  font-size: 2rem;
   font-weight: 300;
 }
 
@@ -37,4 +36,11 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* PROJECTS */
 
