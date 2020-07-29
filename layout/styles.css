@@ -21,13 +21,13 @@ body {
 }
 
 .tasks {
-  padding: 10px 10px 10px 50px;
+  padding: 20px;
   overflow-y: scroll;
   position: fixed;
   left: 0;
   top: 0;
   height: 95vh;
-  margin-left: 37vw;
+  margin-left: 38vw;
 }
 
 ::-webkit-scrollbar {
