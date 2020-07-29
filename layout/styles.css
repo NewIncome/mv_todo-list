@@ -1,0 +1,36 @@
+body {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  font-size: 2rem;
+}
+
+.grid {
+  display: grid;
+}
+
+
+.projects {
+  padding: 20px;
+  position: fixed;
+  width: 35vw;
+  height: 95vh;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+  border-right: 1px solid #f5f5f5;
+}
+
+.tasks {
+  padding: 10px 10px 10px 50px;
+  overflow-y: scroll;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 95vh;
+  margin-left: 37vw;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
