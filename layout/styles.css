@@ -38,3 +38,42 @@ body {
   display: none;
 }
 
+.title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.subtitle {
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+.day-filter {
+  margin: 40px 25px;
+}
+
+.task {
+  margin-bottom: 28px;
+  color: #555;
+}
+
+.bullet {
+  display: inline-block;
+  border: 1px solid #555;
+  border-radius: 6px;
+  height: 10px;
+  margin-right: 10px;
+  width: 10px;
+}
+
+.remove {
+  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),linear-gradient(#999, #999);
+  background-position: center, center, center;
+  background-repeat: no-repeat;
+  background-size: 10% 70%, 70% 10%, 100% 100%;
+  border-radius: 6px;
+  float: right;
+  height: 11px;
+  transform: rotate(45deg);
+  width: 11px;
+}
