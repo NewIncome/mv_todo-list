@@ -60,7 +60,13 @@
             </div>
           </div>
           <!-- check w/ javascript if is odd number of projects add remove-bottom class the last child -->
-          <!-- <div class="project-cards-item remove-bottom"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div> -->
+          <div class="project-cards-item remove-bottom">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <img src="./assets/ellipsis.svg" alt="ellipsis-icon">
+            </div>
+          </div>
           <div class="project-cards-item remove-bottom d-flex" id="add-button"><img src="./assets/plus.svg"
               alt="plus-icon" id="plus-icon" />
           </div>
@@ -85,8 +91,10 @@
           </form>
         </div>
       </div>
-
     </div>
+
+
+    
     <div class="tasks">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, deserunt suscipit alias optio ipsum nobis repellat
         esse ad quam! Placeat vel beatae recusandae a rerum cum, ab consequuntur amet rem?</p>
@@ -143,7 +151,7 @@
     removeProjectButton.onclick = (e) => {
       e.preventDefault();
       console.log('remove project');
-       //remove projects
+      //remove projects
       //if removes
       cards.classList.remove('d-none')
       form.classList.add('d-none')
