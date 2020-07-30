@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+* {
+  --primary-color: #0da5f3;
+  --primary-light-color: #acd6ff;
+  --black-700: #5e5e5e;
+  --gray-800: #9197a3;
+  --gray-600: #c6c6c6;
+  --gray-500: #dfdfdf;
+  --gray-400: #f5f5f5;
+  --gray-300: #f8f8f8;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   scrollbar-width: none; /* Firefox */
@@ -12,14 +23,13 @@ body {
 }
 
 .projects {
-  padding: 20px;
   position: fixed;
   width: 35vw;
   height: 95vh;
   left: 0;
   right: 0;
   overflow-y: scroll;
-  border-right: 1px solid #f5f5f5;
+  border-right: 1px solid var(--gray-400);
 }
 
 .tasks {
@@ -41,22 +51,49 @@ body {
   font-weight: 700;
 }
 
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.primary-button {
+  padding: 1rem 0;
+  background-color: var(--primary-light-color);
+  font-size: 1rem;
+  font-weight: 600;
+  border: 0;
+}
+
+.primary-button:focus {
+  outline: none;
+}
+
+.d-none {
+  display: none;
+}
+
 /* PROJECTS */
 
 .project-cards {
-  margin: 3rem 0;
+  padding: 20px;
 }
 
 .project-cards-content {
   display: grid;
   grid-template-columns: repeat(2, minmax(auto, auto));
   font-weight: 600;
+  margin: 3rem 0;
 }
 
 .project-cards-item {
   height: 10rem;
   padding: 1rem;
-  border-bottom: 1px solid #f8f8f8;
+  border-bottom: 1px solid var(--gray-300);
+  cursor: pointer;
 }
 
 .remove-bottom {
@@ -64,11 +101,10 @@ body {
 }
 
 .project-cards-item:nth-child(odd) {
-  border-right: 1px solid #f8f8f8;
+  border-right: 1px solid var(--gray-300);
 }
 
 .project-cards-item:last-child {
-  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 6rem;
@@ -76,17 +112,64 @@ body {
 
 .project-title {
   font-size: 1rem;
-  color: #5e5e5e;
+  color: var(--black-700);
   text-transform: capitalize;
   margin-bottom: 1rem;
 }
 
 .project-subtitle {
   font-size: 0.9rem;
-  color: #c6c6c6;
+  color: var(--gray-600);
   text-transform: uppercase;
 }
 
 #plus-icon {
   width: 60%;
+}
+
+/* FORM-PROJECTS */
+form {
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+.form-cards {
+}
+
+.form-cards-content {
+  padding: 20px;
+}
+
+form input,
+form textarea,
+form button {
+  margin: 1.5rem 0;
+  border-radius: 0.25rem;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+#title {
+  padding: 0.25rem 0;
+}
+
+#add-project {
+  cursor: pointer;
+}
+
+.navbar-content {
+  box-shadow: -1px 7px 20px 0 var(--gray-500);
+  height: 10vh;
+  align-items: center;
+}
+
+.arrow-back {
+  cursor: pointer;
+}
+
+.arrow-back i {
+  font-size: 2rem;
+  margin-left: 1.5vw;
 }

@@ -13,21 +13,60 @@
 <body>
   <main>
     <div class="projects">
-      <h1 class="title">My Projects</h1>
-
-      <div class="project-cards">
+      <!-- CARDS -->
+      <div class="project-cards d-none">
+        <h1 class="title">My Projects</h1>
         <div class="project-cards-content">
-          <div class="project-cards-item"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div>
-          <div class="project-cards-item"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div>
-          <div class="project-cards-item"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div>
-          <div class="project-cards-item"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div>
-          <div class="project-cards-item"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div>
-          <div class="project-cards-item"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div>
+          <div class="project-cards-item">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+          </div>
+          <div class="project-cards-item">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+          </div>
+          <div class="project-cards-item">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+          </div>
+          <div class="project-cards-item">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+          </div>
+          <div class="project-cards-item">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+          </div>
+          <div class="project-cards-item">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+          </div>
           <!-- check w/ javascript if is odd number of projects add remove-bottom class the last child -->
           <!-- <div class="project-cards-item remove-bottom"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div> -->
-          <div class="project-cards-item remove-bottom"><img src="./assets/plus.svg" alt="plus-icon" id="plus-icon"/></div>
+          <div class="project-cards-item remove-bottom d-flex"><img src="./assets/plus.svg" alt="plus-icon"
+              id="plus-icon" />
+          </div>
         </div>
       </div>
+
+      <!-- FORM-CARDS -->
+      <div class="form-cards">
+        <div class="navbar">
+          <div class="navbar-content d-flex">
+            <div class="arrow-back"><i class='fas fa-arrow-left'></i></div>
+          </div>
+        </div>
+        <div class="form-cards-content">
+          <form class="d-flex">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" />
+            <label for="title">Description</label>
+            <textarea name="description" id="description" cols="30" rows="5"></textarea>
+            <button id="add-project" class="primary-button">Save</button>
+          </form>
+        </div>
+      </div>
+
     </div>
     <div class="tasks">
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, deserunt suscipit alias optio ipsum nobis repellat
