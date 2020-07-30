@@ -81,6 +81,7 @@ body {
 .fa-check-circle {
   font-size: 18px;
   margin-right: 10px;
+  vertical-align: middle;
 }
 
 .fa-check-circle { color: #ccc; }
@@ -95,11 +96,27 @@ body {
   border-radius: 25px;
   height: 40px;
   width: 40px;
+  position: absolute;
+  bottom: 10px;
+  left: 48%;
 }
 
-.hidden { display: hidden; }
+.hidden { display: none; }
 
 .scratched {
   color: #ccc;
   text-decoration: line-through;
+}
+
+#formDiv {
+  background: #463c31f2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#taskForm {
+
 }

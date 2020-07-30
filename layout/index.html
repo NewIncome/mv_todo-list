@@ -57,21 +57,28 @@
           <li class="task"><i class="far fa-circle" data="6"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="6"></i></li>
         </ul>
       </div>
-      <div class="fa newTask"></div>
-    </div>
-    <div class="formDiv">
-      <form action="">
-        <input type="text">
-      </form>
+      <div class="fas newTask"></div>
+      <div id="formDiv" class="hidden">
+        <form action="" id="taskForm">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" />
+          <label for="title">Description</label>
+          <textarea name="description" id="description" cols="30" rows="5"></textarea>
+          <button id="add-project" class="primary-button">Save</button>
+        </form>
+      </div>
     </div>
   </main>
 
   <script>
+    // const taskSide = document.querySelector('.tasks');
     const todayList = document.querySelector('#today-list');
     const tomorrowList = document.querySelector('#tomorrow-list');
     const upcomingList = document.querySelector('#upcoming-list');
     // const tasks = document.querySelectorAll('');
     const bullets = document.querySelectorAll('.fa-circle');
+    const newTask = document.querySelector('.newTask');
+    const formBackgnd = document.querySelector('#formDiv');
 
     bullets.forEach(bullet => {
       bullet.onclick = () => {
@@ -84,6 +91,12 @@
         bullet.nextSibling.className = spanText === 'unscratched' ? 'scratched' : 'unscratched';
       };
     });
+
+    newTask.onclick = () => {
+      formBackgnd.className = 'unhidden';
+    };
+
+    formBackgnd.onclick = () => formBackgnd.className = 'hidden';
 
   </script>
 
