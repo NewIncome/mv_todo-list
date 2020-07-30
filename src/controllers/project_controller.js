@@ -1,5 +1,5 @@
-const Project = require('../model/project');
-const saveToLocalStorage = require('./localstorage_controller');
+import Project from '../model/project';
+import saveToLocalStorage from './localstorage_controller';
 
 const projectController = (() => {
   const projects = [];
@@ -13,7 +13,7 @@ const projectController = (() => {
 
   const removeProject = (projectId) => {
     const index = projects.findIndex(
-      (project) => project.getId() === projectId,
+      (project) => project.getId() === projectId
     );
     if (index !== -1) {
       projects.splice(index, 1);
@@ -45,6 +45,4 @@ const projectController = (() => {
   };
 })();
 
-module.exports = {
-  projectController,
-};
+export default projectController;

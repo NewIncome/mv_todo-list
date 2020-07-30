@@ -1,5 +1,5 @@
-const Task = require('../model/task');
-const saveToLocalStorage = require('./localstorage_controller');
+import Task from '../model/task';
+import saveToLocalStorage from './localstorage_controller';
 
 const taskController = (() => {
   let project;
@@ -8,7 +8,7 @@ const taskController = (() => {
     project = value;
   };
 
-  const addTask = (title, description, dueDate, priority) => {
+  const addTask = (title, description, dueDate, priority = 'low') => {
     const newTask = Task(title, description, dueDate, priority);
     project.setTasks(newTask);
     saveToLocalStorage();
@@ -32,23 +32,28 @@ const taskController = (() => {
     return today;
   };
 
-  const filterToday = (taskDate) => project.getTasks().filter(task => {
-    if (task.getDueDate().getYear() === taskDate.getYear()) {
-      if (task.getDueDate().getMonth() === taskDate.getMonth()) {
-        if (task.getDueDate().getDate() === taskDate.getDate()) return taskDate;
+  const filterToday = (taskDate) =>
+    project.getTasks().filter((task) => {
+      if (task.getDueDate().getYear() === taskDate.getYear()) {
+        if (task.getDueDate().getMonth() === taskDate.getMonth()) {
+          if (task.getDueDate().getDate() === taskDate.getDate())
+            return taskDate;
+        }
       }
-    }
-    return false;
-  });
+      return false;
+    });
 
-  const filterUpcoming = () => project.getTasks().filter(task => {
-    const upcomingdate = new Date().setDate(new Date().getDate() + 1);
-    if (task.getDueDate() > upcomingdate) return task;
-    return false;
-  });
+  const filterUpcoming = () =>
+    project.getTasks().filter((task) => {
+      const upcomingdate = new Date().setDate(new Date().getDate() + 1);
+      if (task.getDueDate() > upcomingdate) return task;
+      return false;
+    });
 
   const findTask = (taskId) => {
-    const foundTask = project.getTasks().find((elem) => elem.getId() === taskId);
+    const foundTask = project
+      .getTasks()
+      .find((elem) => elem.getId() === taskId);
     return foundTask || false;
   };
 
@@ -66,7 +71,7 @@ const taskController = (() => {
     return true;
   };
 
-/*
+  /*
 {
   "today":[{object tasks},{}],
   "tomorrow":[tasks array for tomorrow],
@@ -85,6 +90,7 @@ const taskController = (() => {
   };
 })();
 
-module.exports = {
-  taskController,
-};
+export default taskController;
+// module.exports = {
+//   taskController,
+// };

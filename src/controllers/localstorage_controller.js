@@ -1,4 +1,4 @@
-const { projectController } = require('./project_controller');
+import projectController from './project_controller';
 
 const getTasks = (tasksArray) => {
   const result = [];
@@ -7,6 +7,8 @@ const getTasks = (tasksArray) => {
       id: element.getId(),
       title: element.getTitle(),
       description: element.getDescription(),
+      dueDate: element.getDueDate(),
+      priority: element.getPriority(),
     };
     result.push(taskObject);
   });
@@ -16,7 +18,7 @@ const getTasks = (tasksArray) => {
 const ObjectToLocalStorage = (projects) => {
   const projectsArray = [];
 
-  projects.forEach(projectElement => {
+  projects.forEach((projectElement) => {
     const project = {
       id: projectElement.getId(),
       title: projectElement.getTitle(),
@@ -34,4 +36,4 @@ const saveToLocalStorage = () => {
   localStorage.setItem('Projects', JSON.stringify(value));
 };
 
-module.exports = saveToLocalStorage;
+export default saveToLocalStorage;

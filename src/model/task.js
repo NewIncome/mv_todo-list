@@ -4,7 +4,7 @@ const Task = (
   title,
   description,
   dueDate,
-  priority = 'low',
+  priority,
   id = (globalTaskId += 1)
 ) => {
   const getId = () => id;
@@ -39,6 +39,6 @@ const Task = (
   };
 };
 
-// export default task;
+export default Task;
 // exports.task = task;
-module.exports = Task;
+// module.exports = Task;

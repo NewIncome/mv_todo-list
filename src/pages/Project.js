@@ -1,68 +1,20 @@
-import ellipsisIcon from '../assets/ellipsis.svg';
 import addIcon from '../assets/plus.svg';
+import projectElement from '../components/project';
 
-const ProjectPage = () => `
-<div class="projects">
-  <!-- CARDS -->
-  <div class="project-cards">
-    <h1 class="title">My Projects</h1>
-    <div class="project-cards-content">
-      <div class="project-cards-item cards-data" data-id="1">
-        <p class="project-title">all projects</p>
-        <p class="project-subtitle">25 items</p>
-        <div class="options-icon">
-          <img src="${ellipsisIcon}" alt="ellipsis-icon">
-        </div>
-      </div>
-      <div class="project-cards-item cards-data" data-id="2">
-        <p class="project-title">all projects</p>
-        <p class="project-subtitle">25 items</p>
-        <div class="options-icon">
-          <img src="${ellipsisIcon}" alt="ellipsis-icon">
-        </div>
-      </div>
-      <div class="project-cards-item cards-data" data-id="3">
-        <p class="project-title">all projects</p>
-        <p class="project-subtitle">25 items</p>
-        <div class="options-icon">
-          <img src="${ellipsisIcon}" alt="ellipsis-icon">
-        </div>
-      </div>
-      <div class="project-cards-item cards-data" data-id="4">
-        <p class="project-title">all projects</p>
-        <p class="project-subtitle">25 items</p>
-        <div class="options-icon">
-          <img src="${ellipsisIcon}" alt="ellipsis-icon">
-        </div>
-      </div>
-      <div class="project-cards-item cards-data" data-id="5">
-        <p class="project-title">all projects</p>
-        <p class="project-subtitle">25 items</p>
-        <div class="options-icon">
-          <img src="${ellipsisIcon}" alt="ellipsis-icon">
-        </div>
-      </div>
-      <div class="project-cards-item cards-data" data-id="6">
-        <p class="project-title">all projects</p>
-        <p class="project-subtitle">25 items</p>
-        <div class="options-icon">
-          <img src="${ellipsisIcon}" alt="ellipsis-icon">
-        </div>
-      </div>
-      <!-- check w/ javascript if is odd number of projects add remove-bottom class the last child -->
-      <div class="project-cards-item remove-bottom">
-        <p class="project-title">all projects</p>
-        <p class="project-subtitle">25 items</p>
-        <div class="options-icon">
-          <img src="${ellipsisIcon}" alt="ellipsis-icon">
-        </div>
-      </div>
-      <div class="project-cards-item remove-bottom d-flex" id="add-button"><img src="${addIcon}"
-          alt="plus-icon" id="plus-icon" />
-      </div>
-    </div>
-  </div>
+const projectsElements = (projectsArray) => {
+  let projectsInnerHTML = '';
+  projectsArray.forEach((element, idx, array) => {
+    const oddLastElem = array.length % 2 !== 0 && idx === array.length - 1;
+    projectsInnerHTML += projectElement(
+      element,
+      element.getTasks().length,
+      oddLastElem && 'remove-bottom'
+    );
+  });
+  return projectsInnerHTML;
+};
 
+const formElement = () => `
   <!-- FORM-CARDS -->
   <div class="form-cards d-none">
     <div class="navbar">
@@ -81,6 +33,21 @@ const ProjectPage = () => `
       </form>
     </div>
   </div>
+`;
+
+const ProjectPage = (projectsArray) => `
+<div class="projects">
+  <!-- CARDS -->
+  <div class="project-cards">
+    <h1 class="title">My Projects</h1>
+    <div class="project-cards-content">
+    ${projectsElements(projectsArray)}  
+      <div class="project-cards-item remove-bottom d-flex" id="add-button"><img src="${addIcon}"
+          alt="plus-icon" id="plus-icon" />
+      </div>
+    </div>
+  </div>
+  ${formElement()}
 </div>
 `;
 export default ProjectPage;
