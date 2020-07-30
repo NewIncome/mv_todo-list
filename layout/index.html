@@ -80,7 +80,8 @@
             <input type="text" name="title" id="title" />
             <label for="title">Description</label>
             <textarea name="description" id="description" cols="30" rows="5"></textarea>
-            <button id="add-project" class="primary-button">Save</button>
+            <button id="add-project" class="primary-button">Create project/Edit</button>
+            <button id="remove-project" class="secondary-button">Remove project</button>
           </form>
         </div>
       </div>
@@ -113,6 +114,7 @@
     const addButton = document.querySelector('#add-button')
     const backButton = document.querySelector('.arrow-back')
     const addProjectButton = document.querySelector('#add-project')
+    const removeProjectButton = document.querySelector('#remove-project')
     const projectCardItems = document.querySelectorAll('.cards-data')
     const options = document.querySelectorAll('.options-icon')
 
@@ -127,10 +129,22 @@
       form.classList.add('d-none')
     }
 
-    addProjectButton.onclick = () => {
+    addProjectButton.onclick = (e) => {
+      e.preventDefault();
 
       //add/edit projects
       //if saves
+      cards.classList.remove('d-none')
+      form.classList.add('d-none')
+      //render
+      //display a toast message
+    }
+
+    removeProjectButton.onclick = (e) => {
+      e.preventDefault();
+      console.log('remove project');
+       //remove projects
+      //if removes
       cards.classList.remove('d-none')
       form.classList.add('d-none')
       //render

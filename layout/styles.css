@@ -60,15 +60,30 @@ body {
   display: flex;
 }
 
-.primary-button {
+button {
   padding: 1rem 0;
-  background-color: var(--primary-light-color);
   font-size: 1rem;
   font-weight: 600;
+  border-radius: 0.25rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+
+.primary-button {
   border: 0;
+  background-color: var(--primary-light-color);
 }
 
 .primary-button:focus {
+  outline: none;
+}
+
+.secondary-button {
+  background-color: #fff;
+  border: 1px solid var(--primary-light-color);
+}
+
+.secondary-button:focus {
   outline: none;
 }
 
@@ -140,10 +155,6 @@ body {
   width: 1.5rem;
 }
 
-.fas.fa-pencil-alt {
-  margin-right: 1rem;
-}
-
 /* FORM-PROJECTS */
 form {
   flex-direction: column;
@@ -158,8 +169,7 @@ form {
 }
 
 form input,
-form textarea,
-form button {
+form textarea {
   margin: 1.5rem 0;
   border-radius: 0.25rem;
 }
@@ -170,10 +180,6 @@ form textarea {
 
 #title {
   padding: 0.25rem 0;
-}
-
-#add-project {
-  cursor: pointer;
 }
 
 .navbar-content {
