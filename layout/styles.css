@@ -14,6 +14,7 @@ body {
 
 
 .projects {
+  display: none; /* for tests */
   padding: 20px;
   position: fixed;
   width: 35vw;
@@ -26,12 +27,13 @@ body {
 
 .tasks {
   padding: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: fixed;
   left: 0;
   top: 0;
   height: 95vh;
   margin-left: 38vw;
+  width: 60%;
 }
 
 ::-webkit-scrollbar {
@@ -62,7 +64,7 @@ body {
   border: 1px solid #555;
   border-radius: 6px;
   height: 10px;
-  margin-right: 10px;
+  margin: 0 10px 4px 0;
   width: 10px;
 }
 
@@ -74,6 +76,7 @@ body {
   border-radius: 6px;
   float: right;
   height: 11px;
+  margin-top: 12px;
   transform: rotate(45deg);
   width: 11px;
 }
