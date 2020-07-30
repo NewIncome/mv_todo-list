@@ -73,13 +73,31 @@ body {
   font-size: 24px;
 }
 
+.fa,
+.far,
+.fas { cursor: pointer; }
+
 .fa-circle,
 .fa-check-circle {
   font-size: 18px;
   margin-right: 10px;
 }
 
-.fa-check-circle { color: #ccc; } 
+.fa-check-circle { color: #ccc; }
+.fa-pencil-alt { color: #43cc21; }
+/* .fa-plus-circle { color: #299cfb; } */
+
+.newTask {
+  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),linear-gradient(#299cfb, #299cfb);
+  background-position: center, center, center;
+  background-repeat: no-repeat;
+  background-size: 6% 55%, 55% 6%, 100% 100%;
+  border-radius: 25px;
+  height: 40px;
+  width: 40px;
+}
+
+.hidden { display: hidden; }
 
 .scratched {
   color: #ccc;
