@@ -14,7 +14,7 @@
   <main>
     <div class="projects">
       <!-- CARDS -->
-      <div class="project-cards d-none">
+      <div class="project-cards">
         <h1 class="title">My Projects</h1>
         <div class="project-cards-content">
           <div class="project-cards-item">
@@ -43,14 +43,14 @@
           </div>
           <!-- check w/ javascript if is odd number of projects add remove-bottom class the last child -->
           <!-- <div class="project-cards-item remove-bottom"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div> -->
-          <div class="project-cards-item remove-bottom d-flex"><img src="./assets/plus.svg" alt="plus-icon"
-              id="plus-icon" />
+          <div class="project-cards-item remove-bottom d-flex" id="add-button"><img src="./assets/plus.svg"
+              alt="plus-icon" id="plus-icon" />
           </div>
         </div>
       </div>
 
       <!-- FORM-CARDS -->
-      <div class="form-cards">
+      <div class="form-cards d-none">
         <div class="navbar">
           <div class="navbar-content d-flex">
             <div class="arrow-back"><i class='fas fa-arrow-left'></i></div>
@@ -89,7 +89,36 @@
         esse ad quam! Placeat vel beatae recusandae a rerum cum, ab consequuntur amet rem?</p>
     </div>
   </main>
+  <script>
+    const cards = document.querySelector('.project-cards')
+    const form = document.querySelector('.form-cards')
+    const addButton = document.querySelector('#add-button')
+    const backButton = document.querySelector('.arrow-back')
+    const addProjectButton = document.querySelector('#add-project')
 
+    addButton.onclick = () => {
+      cards.classList.add('d-none')
+      form.classList.remove('d-none')
+
+    }
+
+    backButton.onclick = () => {
+      cards.classList.remove('d-none')
+      form.classList.add('d-none')
+    }
+
+    addProjectButton.onclick = () => {
+      cards.classList.remove('d-none')
+      form.classList.add('d-none')
+      //add/edit projects
+      //if saves
+        //render
+        //display a toast message
+    }
+
+
+
+  </script>
 </body>
 
 </html>
