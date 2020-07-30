@@ -90,6 +90,7 @@ body {
 }
 
 .project-cards-item {
+  position: relative;
   height: 10rem;
   padding: 1rem;
   border-bottom: 1px solid var(--gray-300);
@@ -127,6 +128,17 @@ body {
   width: 60%;
 }
 
+.options-icon {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: var(--gray-600);
+}
+
+.fas.fa-pencil-alt {
+  margin-right: 1rem;
+}
+
 /* FORM-PROJECTS */
 form {
   flex-direction: column;
@@ -161,7 +173,7 @@ form textarea {
 
 .navbar-content {
   box-shadow: -1px 7px 20px 0 var(--gray-500);
-  height: 10vh;
+  height: 5vw;
   align-items: center;
 }
 

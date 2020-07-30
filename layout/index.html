@@ -17,29 +17,47 @@
       <div class="project-cards">
         <h1 class="title">My Projects</h1>
         <div class="project-cards-content">
-          <div class="project-cards-item">
+          <div class="project-cards-item cards-data" data-id="1">
             <p class="project-title">all projects</p>
             <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
           </div>
-          <div class="project-cards-item">
+          <div class="project-cards-item cards-data" data-id="2">
             <p class="project-title">all projects</p>
             <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
           </div>
-          <div class="project-cards-item">
+          <div class="project-cards-item cards-data" data-id="3">
             <p class="project-title">all projects</p>
             <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
           </div>
-          <div class="project-cards-item">
+          <div class="project-cards-item cards-data" data-id="4">
             <p class="project-title">all projects</p>
             <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
           </div>
-          <div class="project-cards-item">
+          <div class="project-cards-item cards-data" data-id="5">
             <p class="project-title">all projects</p>
             <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
           </div>
-          <div class="project-cards-item">
+          <div class="project-cards-item cards-data" data-id="6">
             <p class="project-title">all projects</p>
             <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
           </div>
           <!-- check w/ javascript if is odd number of projects add remove-bottom class the last child -->
           <!-- <div class="project-cards-item remove-bottom"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div> -->
@@ -95,6 +113,8 @@
     const addButton = document.querySelector('#add-button')
     const backButton = document.querySelector('.arrow-back')
     const addProjectButton = document.querySelector('#add-project')
+    const projectCardItems = document.querySelectorAll('.cards-data')
+    const options = document.querySelectorAll('.options-icon')
 
     addButton.onclick = () => {
       cards.classList.add('d-none')
@@ -108,13 +128,80 @@
     }
 
     addProjectButton.onclick = () => {
-     
+
       //add/edit projects
       //if saves
-        cards.classList.remove('d-none')
-        form.classList.add('d-none')
-        //render
-        //display a toast message
+      cards.classList.remove('d-none')
+      form.classList.add('d-none')
+      //render
+      //display a toast message
+    }
+
+
+
+    projectCardItems.forEach((element, index) => {
+      element.onclick = (event) => {
+        var origin = event.srcElement || event.target;
+        if (origin.tagName && origin.tagName.match(/div/i)) {
+          //getting directly from the element
+          console.log(event.target.getAttribute('data-id'));
+          // do things
+        }
+        if (origin.tagName && origin.tagName.match(/p/i)) {
+          //getting directly from the element
+          console.log('clicked children ', element.getAttribute('data-id'));
+          // do things
+        }
+
+      }
+      options[index].onclick = () => {
+        cards.classList.add('d-none')
+        form.classList.remove('d-none')
+        //display edit button and delete in form edit 
+      }
+    });
+
+
+    projectCardItems.forEach(element => {
+      element.addEventListener('long-press', (e) => {
+        console.log('long press');
+      })
+    })
+
+
+
+
+
+
+    //try later work with long press library or native application 
+    const longPress = (elementAction, elementDisplay) => {
+
+      // Create variable for setTimeout
+      var delay;
+
+      // Set number of milliseconds for longpress
+      var timeout = 500;
+
+
+      elementAction.addEventListener('mousedown', function (e) {
+        var _this = this;
+        delay = setTimeout(setAction, timeout);
+
+        function setAction() {
+          elementDisplay.classList.add('red-background');
+        }
+
+      }, true);
+
+      elementAction.addEventListener('mouseup', function (e) {
+        // On mouse up, we know it is no longer a longpress
+        clearTimeout(delay);
+      });
+
+      elementAction.addEventListener('mouseout', function (e) {
+        clearTimeout(delay);
+      });
+
     }
 
 
