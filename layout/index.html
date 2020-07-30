@@ -38,30 +38,54 @@
       <div></div>
       <div id="today" class="day-filter">
         <h3 class="subtitle">Today</h3>
-        <ul class="task-list">
-          <li class="task"><div class="bullet"></div><span>task for x day to be done</span><div class="remove"></div></li>
-          <li class="task"><div class="bullet"></div><span>task for x day to be done</span><div class="remove"></div></li>
+        <ul id="today-list" class="task-list">
+          <li class="task"><i class="far fa-circle" data="1"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="1"></i></li>
+          <li class="task"><i class="far fa-circle" data="2"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="2"></i></li>
           <li class="task">
-            <div class="bullet"></div>
-            <span class="li-text">task for x day to be done</span>
-            <div class="remove"></div></li>
+            <i class="far fa-circle" data="3"></i>
+            <span class="unscratched">task for x day to be done</span>
+            <i class="fa fa-times-circle" data="3"></i>
+            <!-- <i class="fa fa-times-circle" data=""></i>
+            <i class="fa fa-pencil-alt" data="2"></i> -->
+          </li>
         </ul>
       </div>
       <div id="tomorrow" class="day-filter">
         <h3 class="subtitle">Tomorrow</h3>
-        <ul class="task-list">
-          <li class="task"><div class="bullet"></div><span>task for x day to be done</span><div class="remove"></div></li>
-          <li class="task"><div class="bullet"></div><span>task for x day to be done</span><div class="remove"></div></li>
+        <ul id="tomorrow-list" class="task-list">
+          <li class="task"><i class="far fa-circle" data="4"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="4"></i></li>
+          <li class="task"><i class="far fa-circle" data="5"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="5"></i></li>
         </ul>
       </div>
       <div id="upcoming" class="day-filter">
         <h3 class="subtitle">Upcoming</h3>
-        <ul class="task-list">
-          <li class="task"><div class="bullet"></div><span>task for x day to be done</span><div class="remove"></div></li>
+        <ul id="upcoming-list" class="task-list">
+          <li class="task"><i class="far fa-circle" data="6"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="6"></i></li>
         </ul>
       </div>
     </div>
   </main>
+
+  <script>
+    const todayList = document.querySelector('#today-list');
+    const tomorrowList = document.querySelector('#tomorrow-list');
+    const upcomingList = document.querySelector('#upcoming-list');
+    // const tasks = document.querySelectorAll('');
+    const bullets = document.querySelectorAll('.fa-circle');
+
+    bullets.forEach(bullet => {
+      bullet.onclick = () => {
+        console.log(bullet.getAttribute('data'));
+        const editIcon = bullet.parentElement.lastChild.className;
+        const markIcon = bullet.parentElement.firstChild.className;
+        const spanText = bullet.nextSibling.className;
+        bullet.parentElement.lastChild.className = editIcon === 'fa fa-pencil-alt' ? 'fa fa-times-circle' : 'fa fa-pencil-alt';
+        bullet.parentElement.firstChild.className = markIcon === 'far fa-circle' ? 'fas fa-check-circle' : 'far fa-circle';
+        bullet.nextSibling.className = spanText === 'unscratched' ? 'scratched' : 'unscratched';
+      };
+    });
+
+  </script>
 
 </body>
 

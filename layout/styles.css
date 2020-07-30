@@ -68,15 +68,20 @@ body {
   width: 10px;
 }
 
-.remove {
-  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),linear-gradient(#999, #999);
-  background-position: center, center, center;
-  background-repeat: no-repeat;
-  background-size: 10% 70%, 70% 10%, 100% 100%;
-  border-radius: 6px;
+.fa {
   float: right;
-  height: 11px;
-  margin-top: 12px;
-  transform: rotate(45deg);
-  width: 11px;
+  font-size: 24px;
+}
+
+.fa-circle,
+.fa-check-circle {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.fa-check-circle { color: #ccc; } 
+
+.scratched {
+  color: #ccc;
+  text-decoration: line-through;
 }
