@@ -135,6 +135,11 @@ body {
   color: var(--gray-600);
 }
 
+.options-icon img {
+  transform: rotate(90deg);
+  width: 1.5rem;
+}
+
 .fas.fa-pencil-alt {
   margin-right: 1rem;
 }
