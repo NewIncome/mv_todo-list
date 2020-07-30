@@ -1,4 +1,4 @@
-const Project = require('../components/project');
+const Project = require('../model/project');
 const saveToLocalStorage = require('./localstorage_controller');
 
 const projectController = (() => {

@@ -1,4 +1,4 @@
-const Task = require('../components/task');
+const Task = require('../model/task');
 const saveToLocalStorage = require('./localstorage_controller');
 
 const taskController = (() => {
