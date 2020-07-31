@@ -16,7 +16,7 @@ const App = () => {
   const projectsLocalStorage = JSON.parse(localStorage.getItem('Projects'));
 
   main.innerHTML = ProjectPage(projectsLocalStorage);
-  // main.innerHTML = TaskPage(projectsLocalStorage.task);
+  // main.innerHTML = TaskPage(projectsLocalStorage.task)1;
   return main;
 };
 
