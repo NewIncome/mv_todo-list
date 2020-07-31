@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 * {
-  --primary-color: #0da5f3;
+  --primary-color: #299cfb;
   --primary-light-color: #acd6ff;
   --black-700: #5e5e5e;
   --gray-800: #9197a3;
@@ -63,16 +63,17 @@ body {
 
 button {
   padding: 1rem 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 0.25rem;
+  border-radius: 1.6rem;
   margin: 0.5rem 0;
   cursor: pointer;
 }
 
 .primary-button {
   border: 0;
-  background-color: var(--primary-light-color);
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .primary-button:focus {
@@ -86,6 +87,21 @@ button {
 
 .secondary-button:focus {
   outline: none;
+}
+
+button,
+a.link-button {
+  letter-spacing: 0.5px;
+}
+
+a.link-button {
+  color: var(--gray-600);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 1rem;
+  cursor: pointer;
 }
 
 .d-none {
@@ -159,10 +175,6 @@ button {
 /* FORM-PROJECTS */
 form {
   flex-direction: column;
-  margin-top: 3rem;
-}
-
-.form-cards {
 }
 
 .form-cards-content {
@@ -171,16 +183,36 @@ form {
 
 form input,
 form textarea {
-  margin: 1.5rem 0;
-  border-radius: 0.25rem;
+  margin: 1rem 0;
+  border: 0;
+}
+
+form input::placeholder,
+form input {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+form input {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+form textarea::placeholder,
+form textarea {
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 form textarea {
+  font-size: 1.25rem;
+  font-weight: 500;
   resize: vertical;
 }
 
-#title {
-  padding: 0.25rem 0;
+form input:focus,
+form textarea:focus {
+  outline: none;
 }
 
 .navbar-content {
@@ -191,16 +223,12 @@ form textarea {
 
 .arrow-back {
   cursor: pointer;
+  margin-left: 1rem;
 }
 
 .arrow-back i {
   font-size: 2rem;
   margin-left: 1.5vw;
-}
-
-.subtitle {
-  font-weight: bold;
-  margin: 30px 0;
 }
 
 .day-filter {
@@ -228,7 +256,9 @@ form textarea {
 
 .fa,
 .far,
-.fas { cursor: pointer; }
+.fas {
+  cursor: pointer;
+}
 
 .fa-circle,
 .fa-check-circle {
@@ -237,12 +267,19 @@ form textarea {
   vertical-align: middle;
 }
 
-.fa-check-circle { color: #ccc; }
-.fa-pencil-alt { color: #43cc21; }
+.fa-check-circle {
+  color: #ccc;
+}
+
+.fa-pencil-alt {
+  color: #43cc21;
+}
+
 /* .fa-plus-circle { color: #299cfb; } */
 
 .newTask {
-  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),linear-gradient(#299cfb, #299cfb);
+  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),
+    linear-gradient(#299cfb, #299cfb);
   background-position: center, center, center;
   background-repeat: no-repeat;
   background-size: 6% 55%, 55% 6%, 100% 100%;
@@ -254,7 +291,9 @@ form textarea {
   left: 48%;
 }
 
-.hidden { display: none; }
+.hidden {
+  display: none;
+}
 
 .scratched {
   color: #ccc;
@@ -268,8 +307,4 @@ form textarea {
   left: 0;
   height: 100%;
   width: 100%;
-}
-
-#taskForm {
-
 }

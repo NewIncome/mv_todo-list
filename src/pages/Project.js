@@ -1,4 +1,5 @@
 import addIcon from '../assets/plus.svg';
+import arrowBackIcon from '../assets/arrow-back.svg';
 import projectElement from '../components/project';
 
 const projectsElements = (projectsArray) => {
@@ -19,17 +20,17 @@ const formElement = () => `
   <div class="form-cards d-none">
     <div class="navbar">
       <div class="navbar-content d-flex">
-        <div class="arrow-back"><i class='fas fa-arrow-left'></i></div>
+        <div class="arrow-back">
+          <img src="${arrowBackIcon}" alt="arrow back icon" />
+        </div>
       </div>
     </div>
     <div class="form-cards-content">
       <form class="d-flex">
-        <label for="title">Title</label>
-        <input type="text" name="title" id="title" />
-        <label for="title">Description</label>
-        <textarea name="description" id="description" cols="30" rows="5"></textarea>
-        <button id="add-project" class="primary-button">Create project/Edit</button>
-        <button id="remove-project" class="secondary-button">Remove project</button>
+      <input type="text" name="title" id="title" placeholder="Project Title..." />
+      <textarea name="description" id="description" cols="30" rows="5" placeholder="Description"></textarea>
+      <button id="add-project" class="primary-button">Create project/Edit project</button>
+      <a id="remove-project" class="link-button">Remove project</a>
       </form>
     </div>
   </div>
