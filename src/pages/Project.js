@@ -1,5 +1,6 @@
 import addIcon from '../assets/plus.svg';
 import projectElement from '../components/project';
+import initPageScript1 from '../functions/initPageScript';
 
 const projectsElements = (projectsArray) => {
   let projectsInnerHTML = '';
@@ -7,7 +8,7 @@ const projectsElements = (projectsArray) => {
     const oddLastElem = array.length % 2 !== 0 && idx === array.length - 1;
     projectsInnerHTML += projectElement(
       element,
-      element.getTasks().length,
+      element.tasks.length,
       oddLastElem && 'remove-bottom'
     );
   });
@@ -42,7 +43,7 @@ const ProjectPage = (projectsArray) => `
     <h1 class="title">My Projects</h1>
     <div class="project-cards-content">
     ${projectsElements(projectsArray)}  
-      <div class="project-cards-item remove-bottom d-flex" id="add-button"><img src="${addIcon}"
+      <div class="project-cards-item remove-bottom d-flex onclick="addButton()"><img src="${addIcon}"
           alt="plus-icon" id="plus-icon" />
       </div>
     </div>
