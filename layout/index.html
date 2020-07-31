@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./styles.css">
+  <title>To Do List App</title>
+</head>
+
+<body>
+  <main>
+    <div class="projects">
+      <!-- CARDS -->
+      <div class="project-cards">
+        <h1 class="title">My Projects</h1>
+        <div class="project-cards-content">
+          <div class="project-cards-item cards-data" data-id="1">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <img src="./assets/ellipsis.svg" alt="ellipsis-icon">
+            </div>
+          </div>
+          <div class="project-cards-item cards-data" data-id="2">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <img src="./assets/ellipsis.svg" alt="ellipsis-icon">
+            </div>
+          </div>
+          <div class="project-cards-item cards-data" data-id="3">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <img src="./assets/ellipsis.svg" alt="ellipsis-icon">
+            </div>
+          </div>
+          <div class="project-cards-item cards-data" data-id="4">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <img src="./assets/ellipsis.svg" alt="ellipsis-icon">
+            </div>
+          </div>
+          <div class="project-cards-item cards-data" data-id="5">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <img src="./assets/ellipsis.svg" alt="ellipsis-icon">
+            </div>
+          </div>
+          <div class="project-cards-item cards-data" data-id="6">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <img src="./assets/ellipsis.svg" alt="ellipsis-icon">
+            </div>
+          </div>
+          <!-- check w/ javascript if is odd number of projects add remove-bottom class the last child -->
+          <div class="project-cards-item remove-bottom">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <img src="./assets/ellipsis.svg" alt="ellipsis-icon">
+            </div>
+          </div>
+          <div class="project-cards-item remove-bottom d-flex" id="add-button"><img src="./assets/plus.svg"
+              alt="plus-icon" id="plus-icon" />
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM-CARDS -->
+      <div class="form-cards d-none">
+        <div class="navbar">
+          <div class="navbar-content d-flex">
+            <div class="arrow-back"><i class='fas fa-arrow-left'></i></div>
+          </div>
+        </div>
+        <div class="form-cards-content">
+          <form class="d-flex">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" />
+            <label for="title">Description</label>
+            <textarea name="description" id="description" cols="30" rows="5"></textarea>
+            <button id="add-project" class="primary-button">Create project/Edit</button>
+            <button id="remove-project" class="secondary-button">Remove project</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="tasks">
+      <h2 class="title">ALL TASKS</h2>
+      <div></div>
+      <div id="today" class="day-filter">
+        <h3 class="subtitle">Today</h3>
+        <ul id="today-list" class="task-list">
+          <li class="task"><i class="far fa-circle" data="1"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="1"></i></li>
+          <li class="task"><i class="far fa-circle" data="2"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="2"></i></li>
+          <li class="task"><i class="far fa-circle" data="3"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="3"></i></li>
+        </ul>
+      </div>
+      <div id="tomorrow" class="day-filter">
+        <h3 class="subtitle">Tomorrow</h3>
+        <ul id="tomorrow-list" class="task-list">
+          <li class="task"><i class="far fa-circle" data="4"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="4"></i></li>
+          <li class="task"><i class="far fa-circle" data="5"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="5"></i></li>
+        </ul>
+      </div>
+      <div id="upcoming" class="day-filter">
+        <h3 class="subtitle">Upcoming</h3>
+        <ul id="upcoming-list" class="task-list">
+          <li class="task"><i class="far fa-circle" data="6"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="6"></i></li>
+        </ul>
+      </div>
+      <div class="fas newTask"></div>
+      <div id="formDiv" class="hidden">
+        <form action="" id="taskForm">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" />
+          <label for="title">Description</label>
+          <textarea name="description" id="description" cols="30" rows="5"></textarea>
+          <button id="add-project" class="primary-button">Save</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <script>
+    const cards = document.querySelector('.project-cards')
+    const form = document.querySelector('.form-cards')
+    const addButton = document.querySelector('#add-button')
+    const backButton = document.querySelector('.arrow-back')
+    const addProjectButton = document.querySelector('#add-project')
+    const removeProjectButton = document.querySelector('#remove-project')
+    const projectCardItems = document.querySelectorAll('.cards-data')
+    const options = document.querySelectorAll('.options-icon')
+
+    addButton.onclick = () => {
+      cards.classList.add('d-none')
+      form.classList.remove('d-none')
+
+    }
+
+    backButton.onclick = () => {
+      cards.classList.remove('d-none')
+      form.classList.add('d-none')
+    }
+
+    addProjectButton.onclick = (e) => {
+      e.preventDefault();
+
+      //add/edit projects
+      //if saves
+      cards.classList.remove('d-none')
+      form.classList.add('d-none')
+      //render
+      //display a toast message
+    }
+
+    removeProjectButton.onclick = (e) => {
+      e.preventDefault();
+      console.log('remove project');
+      //remove projects
+      //if removes
+      cards.classList.remove('d-none')
+      form.classList.add('d-none')
+      //render
+      //display a toast message
+    }
+
+
+
+    projectCardItems.forEach((element, index) => {
+      element.onclick = (event) => {
+        var origin = event.srcElement || event.target;
+        if (origin.tagName && origin.tagName.match(/div/i)) {
+          //getting directly from the element
+          console.log(event.target.getAttribute('data-id'));
+          // do things
+        }
+        if (origin.tagName && origin.tagName.match(/p/i)) {
+          //getting directly from the element
+          console.log('clicked children ', element.getAttribute('data-id'));
+          // do things
+        }
+
+      }
+      options[index].onclick = () => {
+        cards.classList.add('d-none')
+        form.classList.remove('d-none')
+        //display edit button and delete in form edit 
+      }
+    });
+
+
+    projectCardItems.forEach(element => {
+      element.addEventListener('long-press', (e) => {
+        console.log('long press');
+      })
+    })
+
+
+
+
+
+
+    //try later work with long press library or native application 
+    const longPress = (elementAction, elementDisplay) => {
+
+      // Create variable for setTimeout
+      var delay;
+
+      // Set number of milliseconds for longpress
+      var timeout = 500;
+
+
+      elementAction.addEventListener('mousedown', function (e) {
+        var _this = this;
+        delay = setTimeout(setAction, timeout);
+
+        function setAction() {
+          elementDisplay.classList.add('red-background');
+        }
+
+      }, true);
+
+      elementAction.addEventListener('mouseup', function (e) {
+        // On mouse up, we know it is no longer a longpress
+        clearTimeout(delay);
+      });
+
+      elementAction.addEventListener('mouseout', function (e) {
+        clearTimeout(delay);
+      });
+
+    }
+
+
+
+    // const taskSide = document.querySelector('.tasks');
+    const todayList = document.querySelector('#today-list');
+    const tomorrowList = document.querySelector('#tomorrow-list');
+    const upcomingList = document.querySelector('#upcoming-list');
+    // const tasks = document.querySelectorAll('');
+    const bullets = document.querySelectorAll('.fa-circle');
+    const newTask = document.querySelector('.newTask');
+    const formBackgnd = document.querySelector('#formDiv');
+
+    bullets.forEach(bullet => {
+      bullet.onclick = () => {
+        console.log(bullet.getAttribute('data'));
+        const editIcon = bullet.parentElement.lastChild.className;
+        const markIcon = bullet.parentElement.firstChild.className;
+        const spanText = bullet.nextSibling.className;
+        bullet.parentElement.lastChild.className = editIcon === 'fa fa-pencil-alt' ? 'fa fa-times-circle' : 'fa fa-pencil-alt';
+        bullet.parentElement.firstChild.className = markIcon === 'far fa-circle' ? 'fas fa-check-circle' : 'far fa-circle';
+        bullet.nextSibling.className = spanText === 'unscratched' ? 'scratched' : 'unscratched';
+      };
+    });
+
+    newTask.onclick = () => {
+      formBackgnd.className = 'unhidden';
+    };
+
+    formBackgnd.onclick = () => formBackgnd.className = 'hidden';
+
+  </script>
+
+</body>
+
+</html>

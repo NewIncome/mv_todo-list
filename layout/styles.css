@@ -34,12 +34,13 @@ body {
 
 .tasks {
   padding: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: fixed;
   left: 0;
   top: 0;
   height: 95vh;
   margin-left: 38vw;
+  width: 60%;
 }
 
 ::-webkit-scrollbar {
@@ -195,4 +196,80 @@ form textarea {
 .arrow-back i {
   font-size: 2rem;
   margin-left: 1.5vw;
+}
+
+.subtitle {
+  font-weight: bold;
+  margin: 30px 0;
+}
+
+.day-filter {
+  margin: 40px 25px;
+}
+
+.task {
+  margin-bottom: 28px;
+  color: #555;
+}
+
+.bullet {
+  display: inline-block;
+  border: 1px solid #555;
+  border-radius: 6px;
+  height: 10px;
+  margin: 0 10px 4px 0;
+  width: 10px;
+}
+
+.fa {
+  float: right;
+  font-size: 24px;
+}
+
+.fa,
+.far,
+.fas { cursor: pointer; }
+
+.fa-circle,
+.fa-check-circle {
+  font-size: 18px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.fa-check-circle { color: #ccc; }
+.fa-pencil-alt { color: #43cc21; }
+/* .fa-plus-circle { color: #299cfb; } */
+
+.newTask {
+  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),linear-gradient(#299cfb, #299cfb);
+  background-position: center, center, center;
+  background-repeat: no-repeat;
+  background-size: 6% 55%, 55% 6%, 100% 100%;
+  border-radius: 25px;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  bottom: 10px;
+  left: 48%;
+}
+
+.hidden { display: none; }
+
+.scratched {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+#formDiv {
+  background: #463c31f2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#taskForm {
+
 }
