@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Work",
+    "description": "All related with work",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Send email intro cold email to Spotify frontend developer  ",
+        "description": "Send email intro cold email to Spotify frontend developer. Don't forget attach the resume",
+        "dueDate": "2020-07-30T05:00:00.000Z",
+        "priority": "high"
+      },
+      {
+        "id": 2,
+        "title": "Check Slack 'last today' channel",
+        "description": "Check Slack 'last today' channel, pin an important comment",
+        "dueDate": "2020-07-29T05:00:00.000Z",
+        "priority": "low"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Personal",
+    "description": "Almost my personal dairy",
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Tickets to Soda Stereo in Quito",
+        "description": "Buy 2 VIP tickets to SS concert",
+        "dueDate": "2020-07-04T05:00:00.000Z",
+        "priority": "low"
+      }
+    ]
+  }
+]

@@ -1,34 +1,17 @@
-let globalProjectId = 0;
+import ellipsisIcon from '../assets/ellipsis.svg';
 
-const Project = (title, description, id = (globalProjectId += 1)) => {
-  const tasks = [];
-  const getId = () => id;
-  const getTitle = () => title;
-  const getDescription = () => description;
-  const getTasks = () => tasks;
+const projectElement = (
+  { id, title },
+  numberItems,
+  removeBottomClass = undefined
+) => `
+          <div class="project-cards-item cards-data ${removeBottomClass}" data-id="${id}">
+            <p class="project-title">${title}</p>
+            <p class="project-subtitle">${numberItems} items</p>
+            <div class="options-icon">
+              <img src="${ellipsisIcon}" alt="ellipsis-icon">
+            </div>
+          </div>
+  `;
 
-  const setTitle = (value) => {
-    title = value;
-  };
-  const setDescription = (value) => {
-    description = value;
-  };
-
-  const setTasks = (value) => {
-    tasks.push(value);
-  };
-
-  return {
-    getId,
-    getTitle,
-    getDescription,
-    getTasks,
-    setTitle,
-    setDescription,
-    setTasks,
-  };
-};
-
-// export default project;
-// exports.project = project;
-module.exports = Project;
+export default projectElement;

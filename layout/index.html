@@ -60,7 +60,13 @@
             </div>
           </div>
           <!-- check w/ javascript if is odd number of projects add remove-bottom class the last child -->
-          <!-- <div class="project-cards-item remove-bottom"><p class="project-title">all projects</p><p class="project-subtitle">25 items</p></div> -->
+          <div class="project-cards-item remove-bottom">
+            <p class="project-title">all projects</p>
+            <p class="project-subtitle">25 items</p>
+            <div class="options-icon">
+              <img src="./assets/ellipsis.svg" alt="ellipsis-icon">
+            </div>
+          </div>
           <div class="project-cards-item remove-bottom d-flex" id="add-button"><img src="./assets/plus.svg"
               alt="plus-icon" id="plus-icon" />
           </div>
@@ -85,8 +91,9 @@
           </form>
         </div>
       </div>
-
     </div>
+
+
 
     <div class="tasks">
       <h2 class="title">ALL TASKS</h2>
@@ -94,22 +101,28 @@
       <div id="today" class="day-filter">
         <h3 class="subtitle">Today</h3>
         <ul id="today-list" class="task-list">
-          <li class="task"><i class="far fa-circle" data="1"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="1"></i></li>
-          <li class="task"><i class="far fa-circle" data="2"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="2"></i></li>
-          <li class="task"><i class="far fa-circle" data="3"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="3"></i></li>
+          <li class="task"><i class="far fa-circle" data="1"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="1"></i></li>
+          <li class="task"><i class="far fa-circle" data="2"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="2"></i></li>
+          <li class="task"><i class="far fa-circle" data="3"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="3"></i></li>
         </ul>
       </div>
       <div id="tomorrow" class="day-filter">
         <h3 class="subtitle">Tomorrow</h3>
         <ul id="tomorrow-list" class="task-list">
-          <li class="task"><i class="far fa-circle" data="4"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="4"></i></li>
-          <li class="task"><i class="far fa-circle" data="5"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="5"></i></li>
+          <li class="task"><i class="far fa-circle" data="4"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="4"></i></li>
+          <li class="task"><i class="far fa-circle" data="5"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="5"></i></li>
         </ul>
       </div>
       <div id="upcoming" class="day-filter">
         <h3 class="subtitle">Upcoming</h3>
         <ul id="upcoming-list" class="task-list">
-          <li class="task"><i class="far fa-circle" data="6"></i><span class="unscratched">task for x day to be done</span><i class="fa fa-pencil-alt" data="6"></i></li>
+          <li class="task"><i class="far fa-circle" data="6"></i><span class="unscratched">task for x day to be
+              done</span><i class="fa fa-pencil-alt" data="6"></i></li>
         </ul>
       </div>
       <div class="fas newTask"></div>
@@ -159,7 +172,7 @@
     removeProjectButton.onclick = (e) => {
       e.preventDefault();
       console.log('remove project');
-       //remove projects
+      //remove projects
       //if removes
       cards.classList.remove('d-none')
       form.classList.add('d-none')
