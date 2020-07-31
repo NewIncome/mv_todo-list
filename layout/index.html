@@ -125,9 +125,11 @@
               done</span><i class="fa fa-pencil-alt" data="6"></i></li>
         </ul>
       </div>
+
       <div class="fas newTask"></div>
       <div id="formDiv" class="hidden">
-        <form action="" id="taskForm">
+        <div class="fas formBack"><div class="bar"></div></div>
+        <form id="taskForm" class="d-flex">
           <label for="title">Title</label>
           <input type="text" name="title" id="title" />
           <label for="title">Description</label>
@@ -255,8 +257,10 @@
     const upcomingList = document.querySelector('#upcoming-list');
     // const tasks = document.querySelectorAll('');
     const bullets = document.querySelectorAll('.fa-circle');
-    const newTask = document.querySelector('.newTask');
-    const formBackgnd = document.querySelector('#formDiv');
+    const newTaskBttn = document.querySelector('.newTask');
+    const formDiv = document.querySelector('#formDiv');
+    const taskForm = document.querySelector('#taskForm');
+    const formBack = document.querySelector('.formBack');
 
     bullets.forEach(bullet => {
       bullet.onclick = () => {
@@ -270,11 +274,9 @@
       };
     });
 
-    newTask.onclick = () => {
-      formBackgnd.className = 'unhidden';
-    };
+    newTaskBttn.onclick = () => formDiv.className = 'unhidden';
 
-    formBackgnd.onclick = () => formBackgnd.className = 'hidden';
+    formBack.onclick = (e) => formDiv.className = 'hidden';
 
   </script>
 

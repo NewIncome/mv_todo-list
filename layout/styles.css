@@ -261,15 +261,29 @@ form textarea {
   text-decoration: line-through;
 }
 
-#formDiv {
-  background: #463c31f2;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+.formBack {
+  background: radial-gradient(#f8f8f8 15%, transparent 10%), linear-gradient(#f8f8f8, #f8f8f8), radial-gradient(#f8f8f8 15%, transparent 10%);
+  background-size: 7% 60%, 9% 12%, 7% 60%;
+  background-repeat: no-repeat;
+  background-position: 45% 140%, 50% 91%, 55% 140%;
+  height: 10%;
   width: 100%;
 }
 
 #taskForm {
+  background: #f8f8f8;
+  margin: 0;
+  height: 90%;
+  border-radius: 40px;
+  padding: 30px 20px;
+}
 
+#formDiv {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border-radius: 5px;
+  height: 100%;
+  background: #75726fd9;
 }
