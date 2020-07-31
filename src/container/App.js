@@ -14,10 +14,22 @@ const App = () => {
   main.setAttribute('id', 'main');
   initProjectObject();
   const projectsLocalStorage = JSON.parse(localStorage.getItem('Projects'));
+
   main.innerHTML = ProjectPage(projectsLocalStorage);
   // main.innerHTML = TaskPage(projectsLocalStorage.task);
+  document.onreadystatechange = () => {
+    if (document.readyState === 'complete') {
+      // document ready
 
-
+      const cards = document.querySelector('.project-cards');
+      const form = document.querySelector('.form-cards');
+      const addButton = document.querySelector('#add-button');
+      addButton.onclick = () => {
+        cards.classList.add('d-none');
+        form.classList.remove('d-none');
+      };
+    }
+  };
   return main;
 };
 
