@@ -43,17 +43,21 @@ body {
   width: 60%;
 }
 
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.tasks h2 {
+  text-align: center;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
 
 .title {
   font-size: 2rem;
-  font-weight: 700;
-}
-
-.subtitle {
-  font-size: 1.25rem;
   font-weight: 700;
 }
 
@@ -240,6 +244,10 @@ form textarea:focus {
   color: #555;
 }
 
+.task-list {
+  margin-top: 1.5rem;
+}
+
 .bullet {
   display: inline-block;
   border: 1px solid #555;
@@ -272,23 +280,24 @@ form textarea:focus {
 }
 
 .fa-pencil-alt {
-  color: #43cc21;
+  font-size: 1rem;
+  color: var(--gray-600);
 }
 
-/* .fa-plus-circle { color: #299cfb; } */
-
 .newTask {
-  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),
+  background:
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
     linear-gradient(#299cfb, #299cfb);
   background-position: center, center, center;
   background-repeat: no-repeat;
   background-size: 6% 55%, 55% 6%, 100% 100%;
-  border-radius: 25px;
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  bottom: 10px;
-  left: 48%;
+  border-radius: 3.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2.5rem;
 }
 
 .hidden {
