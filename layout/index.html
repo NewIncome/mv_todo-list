@@ -148,11 +148,13 @@
       <div id="formDiv" class="hidden">
         <div class="fas formBack"><div class="bar"></div></div>
         <form id="taskForm" class="d-flex">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" />
-          <label for="title">Description</label>
-          <textarea name="description" id="description" cols="30" rows="5"></textarea>
-          <button id="add-project" class="primary-button">Save</button>
+          <input type="text" name="title" id="task-title" placeholder="Task Title..." />
+          <textarea name="description" id="task-description" cols="30" rows="5" placeholder="Description"></textarea>
+          <!-- <input type="date" name="title" id="task-dueDate" placeholder="Due Date..." /> -->
+          <input type="text" placeholder="Due Date..."
+                    onclick="(this.type='date')">
+          <input type="text" name="title" id="task-priority" placeholder="Priority..." />
+          <button id="add-task" class="primary-button">Save</button>
         </form>
       </div>
     </div>
@@ -275,10 +277,12 @@
     const upcomingList = document.querySelector('#upcoming-list');
     // const tasks = document.querySelectorAll('');
     const bullets = document.querySelectorAll('.fa-circle');
+    const editIcons = document.querySelectorAll('.fa-pencil-alt');
     const newTaskBttn = document.querySelector('.newTask');
     const formDiv = document.querySelector('#formDiv');
     const taskForm = document.querySelector('#taskForm');
     const formBack = document.querySelector('.formBack');
+    const editTaskBttn = document.querySelector('#add-task');
 
     bullets.forEach(bullet => {
       bullet.onclick = () => {
@@ -292,9 +296,27 @@
       };
     });
 
-    newTaskBttn.onclick = () => formDiv.className = 'unhidden';
+    newTaskBttn.onclick = () => {
+      editTaskBttn.innerHTML = 'Create Task';
+      formDiv.className = 'unhidden';
+    };
 
     formBack.onclick = (e) => formDiv.className = 'hidden';
+
+    editIcons.forEach(editIcon => {
+      editIcon.onclick = () => {
+        console.log(editIcon.className);
+        if (editIcon.className === 'fa fa-pencil-alt') {
+          editTaskBttn.innerHTML = 'Edit Task';
+          formDiv.className = 'unhidden';
+        }
+        else {
+          editIcon.onclick
+          const decision = prompt('Are you sure you want to remove this task?')
+          if (decision != null) editIcon.parentElement.remove();
+        } 
+      };
+    });
 
   </script>
 
