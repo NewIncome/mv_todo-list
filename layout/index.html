@@ -146,13 +146,13 @@
 
       <div class="fas newTask"></div>
       <div id="formDiv" class="hidden">
-        <div class="fas formBack"><div class="bar"></div></div>
+        <div class="fas formBack">
+          <div class="bar"></div>
+        </div>
         <form id="taskForm" class="d-flex">
           <input type="text" name="title" id="task-title" placeholder="Task Title..." />
           <textarea name="description" id="task-description" cols="30" rows="5" placeholder="Description"></textarea>
-          <!-- <input type="date" name="title" id="task-dueDate" placeholder="Due Date..." /> -->
-          <input type="text" placeholder="Due Date..."
-                    onclick="(this.type='date')">
+          <input type="date" id="datepicker" autocomplete="off">
           <input type="text" name="title" id="task-priority" placeholder="Priority..." />
           <button id="add-task" class="primary-button">Save</button>
         </form>
@@ -314,9 +314,13 @@
           editIcon.onclick
           const decision = prompt('Are you sure you want to remove this task?')
           if (decision != null) editIcon.parentElement.remove();
-        } 
+        }
       };
     });
+
+    const datePicker = document.querySelector('#datepicker');
+    // INCLUDE JQUERY & JQUERY UI 1.12.1
+
 
   </script>
 
