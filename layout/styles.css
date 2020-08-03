@@ -310,10 +310,10 @@ form textarea:focus {
 }
 
 .formBack {
-  background: radial-gradient(#f8f8f8 15%, transparent 10%), linear-gradient(#f8f8f8, #f8f8f8), radial-gradient(#f8f8f8 15%, transparent 10%);
-  background-size: 7% 60%, 9% 12%, 7% 60%;
+  background: radial-gradient(#f8f8f8 15%, transparent 15%), linear-gradient(#f8f8f8, #f8f8f8), radial-gradient(#f8f8f8 15%, transparent 15%);
+  background-size: 4% 60%, 7% 12%, 4% 60%;
   background-repeat: no-repeat;
-  background-position: 45% 140%, 50% 91%, 55% 140%;
+  background-position: 46.5% 140%, 50% 91%, 53.5% 140%;
   height: 10%;
   width: 100%;
 }
