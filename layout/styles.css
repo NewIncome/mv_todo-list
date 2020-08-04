@@ -112,6 +112,18 @@ a.link-button {
   display: none;
 }
 
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 20%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
 /* PROJECTS */
 
 .project-cards {
@@ -187,19 +199,21 @@ form {
 
 form input,
 form textarea {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   border: 0;
+  background-color: var(--gray-300);
 }
 
-form input::placeholder,
-form input {
+form input.primary::placeholder,
+form input.primary {
   font-size: 2rem;
   font-weight: 700;
 }
 
-form input {
-  font-size: 2rem;
-  font-weight: 700;
+form input.secondary::placeholder,
+form input.secondary {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 form textarea::placeholder,
@@ -209,14 +223,17 @@ form textarea {
 }
 
 form textarea {
-  font-size: 1.25rem;
-  font-weight: 500;
   resize: vertical;
 }
 
 form input:focus,
 form textarea:focus {
   outline: none;
+}
+
+#project-form input,
+#project-form textarea {
+  background-color: #fff;
 }
 
 .navbar-content {
@@ -233,6 +250,14 @@ form textarea:focus {
 .arrow-back i {
   font-size: 2rem;
   margin-left: 1.5vw;
+}
+
+.priority-icons {
+  justify-content: space-around;
+}
+
+.priority-icons-content {
+  text-align: center;
 }
 
 .day-filter {
@@ -319,11 +344,11 @@ form textarea:focus {
 }
 
 #taskForm {
-  background: #f8f8f8;
+  background: var(--gray-300);
   margin: 0;
   height: 90%;
-  border-radius: 40px;
-  padding: 30px 20px;
+  border-radius: 1rem;
+  padding: 1rem 3rem;
 }
 
 #formDiv {

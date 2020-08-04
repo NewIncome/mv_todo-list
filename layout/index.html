@@ -83,8 +83,8 @@
           </div>
         </div>
         <div class="form-cards-content">
-          <form class="d-flex">
-            <input type="text" name="title" id="title" placeholder="Project Title..." />
+          <form class="d-flex" id="project-form">
+            <input type="text" name="title" id="title" placeholder="Project Title..." class="primary" />
             <textarea name="description" id="description" cols="30" rows="5" placeholder="Description"></textarea>
             <button id="add-project" class="primary-button">Create project/Edit project</button>
             <a id="remove-project" class="link-button">Remove project</a>
@@ -150,10 +150,40 @@
           <div class="bar"></div>
         </div>
         <form id="taskForm" class="d-flex">
-          <input type="text" name="title" id="task-title" placeholder="Task Title..." />
-          <textarea name="description" id="task-description" cols="30" rows="5" placeholder="Description"></textarea>
-          <input type="date" id="datepicker" autocomplete="off">
-          <input type="text" name="title" id="task-priority" placeholder="Priority..." />
+          <input type="text" name="title" id="task-title" placeholder="Task Title..." class="primary" />
+          <p></p>
+          <div class="priority-icons d-flex">
+            <div class="card">
+              <div class="priority-icons-content">
+                <img src="https://img.icons8.com/ios/32/000000/low-priority.png" alt="low" />
+                <!-- low filled
+            <img src="https://img.icons8.com/ios-filled/32/000000/low-priority.png"/> -->
+                <p>LOW</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="priority-icons-content">
+                <img src="https://img.icons8.com/ios/32/000000/medium-priority.png" alt="medium" />
+                <!-- medium ios-filled
+            <img src="https://img.icons8.com/ios-filled/32/000000/medium-priority.png"/> -->
+                <p>MEDIUM</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="priority-icons-content">
+                <img src="https://img.icons8.com/ios/32/000000/high-priority.png" alt="high" />
+                <!-- high filled
+            <img src="https://img.icons8.com/ios-filled/32/000000/high-priority.png"/> -->
+                <p>HIGH</p>
+              </div>
+            </div>
+          </div>
+          <input type="date" id="date" autocomplete="off" class="secondary">
+          <textarea name="description" id="task-description" cols="30" rows="3" placeholder="Description"></textarea>
+          <!-- <input type="text" name="title" id="task-priority" placeholder="Priority..." class="secondary" /> -->
+
           <button id="add-task" class="primary-button">Save</button>
         </form>
       </div>
@@ -168,6 +198,10 @@
     const removeProjectButton = document.querySelector('#remove-project')
     const projectCardItems = document.querySelectorAll('.cards-data')
     const options = document.querySelectorAll('.options-icon')
+    const date = document.querySelector('#date')
+
+
+    date.valueAsDate = new Date();
 
     addButton.onclick = () => {
       cards.classList.add('d-none')
