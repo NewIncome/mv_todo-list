@@ -61,10 +61,56 @@ const initPageScript = () => {
     };
   });
 
-  projectCardItems.forEach((element) => {
-    element.addEventListener('long-press', (e) => {
-      console.log('long press');
-    });
+
+
+  // TASKS
+
+  // const todayList = document.querySelector('#today-list');
+  // const tomorrowList = document.querySelector('#tomorrow-list');
+  // const upcomingList = document.querySelector('#upcoming-list');
+  // const tasks = document.querySelectorAll('');
+  const bullets = document.querySelectorAll('.fa-circle');
+  const editIcons = document.querySelectorAll('.fa-pencil-alt');
+  const newTaskBttn = document.querySelector('.newTask');
+  const formDiv = document.querySelector('#formDiv');
+  // const taskForm = document.querySelector('#taskForm');
+  const formBack = document.querySelector('.formBack');
+  const editTaskBttn = document.querySelector('#add-task');
+
+  bullets.forEach((bullet) => {
+    bullet.onclick = () => {
+      // console.log(bullet.getAttribute('data-id'));
+      const editIcon = bullet.parentElement.lastChild.className;
+      const markIcon = bullet.parentElement.firstChild.className;
+      const spanText = bullet.nextSibling.className;
+      console.log(bullet.parentElement.lastChild.className);
+      // console.log(editIcon === 'fa fa-pencil-alt');
+      // console.log(editIcon === 'fa fa-pencil-alt' ? 'fa fa-times-circle' : 'fa fa-pencil-alt');
+      bullet.parentElement.lastChild.className = editIcon === 'fa fa-pencil-alt' ? 'fa fa-times-circle' : 'fa fa-pencil-alt';
+      bullet.parentElement.firstChild.className = markIcon === 'far fa-circle' ? 'fas fa-check-circle' : 'far fa-circle';
+      bullet.nextSibling.className = spanText === 'unscratched' ? 'scratched' : 'unscratched';
+    };
+  });
+
+  newTaskBttn.onclick = () => {
+    editTaskBttn.innerHTML = 'Create Task';
+    formDiv.className = 'unhidden';
+  };
+
+  editIcons.forEach((editIcon) => {
+    editIcon.onclick = () => {
+      console.log(editIcon.className);
+      if (editIcon.className === 'fa fa-pencil-alt') {
+        editTaskBttn.innerHTML = 'Edit Task';
+        formDiv.className = 'unhidden';
+      } else {
+        formBack.onclick = () => {
+          formDiv.className = 'hidden';
+        };
+        const decision = prompt('Are you sure you want to remove this task?');
+        if (decision != null) editIcon.parentElement.remove();
+      }
+    };
   });
 };
 

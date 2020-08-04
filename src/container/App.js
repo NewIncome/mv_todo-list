@@ -3,22 +3,19 @@ import '../styles/style.css';
 import ProjectPage from '../pages/Project';
 // import Tasks from '../pages/Task';
 import projectsJSON from '../assets/projects.json';
-import projectController from '../controllers/project_controller';
+import TaskPage from '../pages/Task';
 
 const initProjectObject = () => {
-  const projectObjects = projectsJSON;
-
-  localStorage.setItem('Projects', JSON.stringify(projectObjects));
-  projectController.projects = JSON.parse(localStorage.getItem('Projects'));
+  localStorage.setItem('Projects', JSON.stringify(projectsJSON));
 };
+
 const App = () => {
   const main = document.createElement('main');
   main.setAttribute('id', 'main');
   initProjectObject();
-  const projectsLocalStorage = JSON.parse(localStorage.getItem('Projects'));
-
-  main.innerHTML = ProjectPage(projectController.projects);
-  // main.innerHTML = TaskPage(projectsLocalStorage.task)1;
+  const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
+  const innerMain = `${ProjectPage(JSONProjects)} ${TaskPage(1, JSONProjects)}`;
+  main.innerHTML = innerMain;
   return main;
 };
 

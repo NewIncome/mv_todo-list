@@ -1,33 +1,38 @@
-import taskController from '../controllers/task_controller'
+import taskController from '../controllers/task_controller';
+import taskElement from '../components/task';
 
-const taskElements = (tasksArray, date) => {
+const findProject = (projectId, projectsArray) => {
+  const project = projectsArray.find((elem) => elem.id === projectId);
+  return project || false;
+};
+
+const taskElements = (projectId, projectsArray) => {
+  const project = findProject(projectId, projectsArray);
   let tasksInnerHTML = '';
-  tasksArray.forEach((element, idx, array) => { 
-    element,
-   });
+  project.tasks.forEach((element, idx, array) => {
+    tasksInnerHTML += taskElement(element);
+  });
 
   return tasksInnerHTML;
 };
 
-const TaskPage = () => `
+const TaskPage = (projectId, projectsArray) => `
 <div class="tasks">
   <h2 class="subtitle">ALL TASKS</h2>
   <div id="today" class="day-filter">
     <h3 class="subtitle">Today</h3>
     <ul id="today-list" class="task-list">
-    ${taskElements(taskController.filterTasksByDate(new Date()))} 
+    ${taskElements(projectId, projectsArray)} 
     </ul>
   </div>
   <div id="tomorrow" class="day-filter">
     <h3 class="subtitle">Tomorrow</h3>
     <ul id="tomorrow-list" class="task-list">
-    ${taskElements(taskController.filterTasksByDate(new Date() + 1))} 
     </ul>
   </div>
   <div id="upcoming" class="day-filter">
     <h3 class="subtitle">Upcoming</h3>
     <ul id="upcoming-list" class="task-list">
-    ${taskElements(taskController.filterUpcoming())} 
     </ul>
   </div>
 
