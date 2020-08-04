@@ -1,49 +1,33 @@
+import taskController from '../controllers/task_controller'
+
+const taskElements = (tasksArray, date) => {
+  let tasksInnerHTML = '';
+  tasksArray.forEach((element, idx, array) => { 
+    element,
+   });
+
+  return tasksInnerHTML;
+};
+
 const TaskPage = () => `
 <div class="tasks">
   <h2 class="subtitle">ALL TASKS</h2>
   <div id="today" class="day-filter">
     <h3 class="subtitle">Today</h3>
     <ul id="today-list" class="task-list">
-      <li class="task"><i class="far fa-circle" data-id="1"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="1"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="2"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="2"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="3"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="3"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="1"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="1"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="2"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="2"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="3"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="3"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="1"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="1"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="2"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="2"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="3"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="3"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="1"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="1"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="2"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="2"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="3"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="3"></i></li>
+    ${taskElements(taskController.filterTasksByDate(new Date()))} 
     </ul>
   </div>
   <div id="tomorrow" class="day-filter">
     <h3 class="subtitle">Tomorrow</h3>
     <ul id="tomorrow-list" class="task-list">
-      <li class="task"><i class="far fa-circle" data-id="4"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="4"></i></li>
-      <li class="task"><i class="far fa-circle" data-id="5"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="5"></i></li>
+    ${taskElements(taskController.filterTasksByDate(new Date() + 1))} 
     </ul>
   </div>
   <div id="upcoming" class="day-filter">
     <h3 class="subtitle">Upcoming</h3>
     <ul id="upcoming-list" class="task-list">
-      <li class="task"><i class="far fa-circle" data-id="6"></i><span class="unscratched">task for x day to be
-          done</span><i class="fa fa-pencil-alt" data-id="6"></i></li>
+    ${taskElements(taskController.filterUpcoming())} 
     </ul>
   </div>
 
