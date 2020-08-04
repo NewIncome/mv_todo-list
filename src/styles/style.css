@@ -43,17 +43,21 @@ body {
   width: 60%;
 }
 
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.tasks h2 {
+  text-align: center;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
 
 .title {
   font-size: 2rem;
-  font-weight: 700;
-}
-
-.subtitle {
-  font-size: 1.25rem;
   font-weight: 700;
 }
 
@@ -106,6 +110,18 @@ a.link-button {
 
 .d-none {
   display: none;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 20%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* PROJECTS */
@@ -183,19 +199,21 @@ form {
 
 form input,
 form textarea {
-  margin: 1rem 0;
+  margin: 1.5rem 0;
   border: 0;
+  background-color: var(--gray-300);
 }
 
-form input::placeholder,
-form input {
+form input.primary::placeholder,
+form input.primary {
   font-size: 2rem;
   font-weight: 700;
 }
 
-form input {
-  font-size: 2rem;
-  font-weight: 700;
+form input.secondary::placeholder,
+form input.secondary {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 form textarea::placeholder,
@@ -205,14 +223,17 @@ form textarea {
 }
 
 form textarea {
-  font-size: 1.25rem;
-  font-weight: 500;
   resize: vertical;
 }
 
 form input:focus,
 form textarea:focus {
   outline: none;
+}
+
+#project-form input,
+#project-form textarea {
+  background-color: #fff;
 }
 
 .navbar-content {
@@ -231,13 +252,25 @@ form textarea:focus {
   margin-left: 1.5vw;
 }
 
+.priority-icons {
+  justify-content: space-around;
+}
+
+.priority-icons-content {
+  text-align: center;
+}
+
 .day-filter {
   margin: 40px 25px;
 }
 
 .task {
-  margin-bottom: 28px;
+  margin-bottom: 2rem;
   color: #555;
+}
+
+.task-list {
+  margin-top: 1.5rem;
 }
 
 .bullet {
@@ -272,23 +305,24 @@ form textarea:focus {
 }
 
 .fa-pencil-alt {
-  color: #43cc21;
+  font-size: 1rem;
+  color: var(--gray-600);
 }
 
-/* .fa-plus-circle { color: #299cfb; } */
-
 .newTask {
-  background: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff),
+  background:
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
     linear-gradient(#299cfb, #299cfb);
   background-position: center, center, center;
   background-repeat: no-repeat;
   background-size: 6% 55%, 55% 6%, 100% 100%;
-  border-radius: 25px;
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  bottom: 10px;
-  left: 48%;
+  border-radius: 3.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2.5rem;
 }
 
 .hidden {
@@ -300,11 +334,32 @@ form textarea:focus {
   text-decoration: line-through;
 }
 
-#formDiv {
-  background: #463c31f2;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+.formBack {
+  height: 10%;
   width: 100%;
+}
+
+.bar {
+  background-color: #fff;
+  border-radius: 29px;
+  margin: 2.5rem auto 0;
+  width: 10%;
+  height: 8px;
+}
+
+#taskForm {
+  background: var(--gray-300);
+  margin: 0;
+  height: 90%;
+  border-radius: 1rem;
+  padding: 1rem 3rem;
+}
+
+#formDiv {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  background: #75726fd9;
 }
