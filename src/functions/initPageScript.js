@@ -80,13 +80,12 @@ const initPageScript = () => {
   bullets.forEach((bullet) => {
     bullet.onclick = () => {
       // console.log(bullet.getAttribute('data-id'));
-      const editIcon = bullet.parentElement.lastChild.className;
+      const editIcon = bullet.parentElement.lastElementChild.className;
       const markIcon = bullet.parentElement.firstChild.className;
       const spanText = bullet.nextSibling.className;
-      console.log(bullet.parentElement.lastChild.className);
       // console.log(editIcon === 'fa fa-pencil-alt');
       // console.log(editIcon === 'fa fa-pencil-alt' ? 'fa fa-times-circle' : 'fa fa-pencil-alt');
-      bullet.parentElement.lastChild.className = editIcon === 'fa fa-pencil-alt' ? 'fa fa-times-circle' : 'fa fa-pencil-alt';
+      bullet.parentElement.lastElementChild.className = editIcon === 'fa fa-pencil-alt' ? 'fa fa-times-circle' : 'fa fa-pencil-alt';
       bullet.parentElement.firstChild.className = markIcon === 'far fa-circle' ? 'fas fa-check-circle' : 'far fa-circle';
       bullet.nextSibling.className = spanText === 'unscratched' ? 'scratched' : 'unscratched';
     };
