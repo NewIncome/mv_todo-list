@@ -334,6 +334,11 @@ form textarea:focus {
   text-decoration: line-through;
 }
 
+.scratched,
+.unscratched {
+  cursor: pointer;
+}
+
 .formBack {
   height: 10%;
   width: 100%;
@@ -355,6 +360,7 @@ form textarea:focus {
   padding: 1rem 3rem;
 }
 
+#taskInfoBack,
 #formDiv {
   position: fixed;
   width: 100%;
@@ -362,4 +368,15 @@ form textarea:focus {
   right: 0;
   height: 100%;
   background: #75726fd9;
+}
+
+#taskInfoBack { width: 65%; }
+
+.taskInfo {
+  background: var(--gray-300);
+  margin: 0 auto;
+  height: 70%;
+  border-radius: 1rem;
+  padding: 1rem 3rem;
+  width: 80%;
 }

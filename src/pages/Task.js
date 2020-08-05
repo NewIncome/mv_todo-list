@@ -1,5 +1,4 @@
-import taskController from '../controllers/task_controller';
-import taskElement from '../components/task';
+import { taskElement } from '../components/task';
 
 const findProject = (projectId, projectsArray) => {
   const project = projectsArray.find((elem) => elem.id === projectId);
@@ -81,12 +80,7 @@ const TaskPage = (projectId, projectsArray) => `
   </form>
 </div>
 
-<!-- TASK FORM -->
-<div id="taskInfoBack" class="hidden">
-  <ul class="taskInfo">
-    ${taskDetails(task)}
-  </ul>
-</div>
+
 `;
 
 export default TaskPage;
