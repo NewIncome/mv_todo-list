@@ -1,4 +1,5 @@
 import Task from '../model/task';
+import projectController from '../controllers/project_controller';
 import saveToLocalStorage from './localstorage_controller';
 
 const taskController = (() => {
@@ -11,7 +12,7 @@ const taskController = (() => {
   const addTask = (title, description, dueDate, priority = 'low') => {
     const newTask = Task(title, description, dueDate, priority);
     project.setTasks(newTask);
-    saveToLocalStorage();
+    saveToLocalStorage(projectController.projects);
     return newTask;
   };
 
@@ -22,7 +23,7 @@ const taskController = (() => {
     if (taskIndex === -1) return false;
 
     project.getTasks().splice(taskIndex, 1);
-    saveToLocalStorage();
+    saveToLocalStorage(projectController.projects);
     return true;
   };
 

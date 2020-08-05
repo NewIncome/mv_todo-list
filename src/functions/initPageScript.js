@@ -71,6 +71,8 @@ const projectScript = () => {
   addButton.onclick = () => {
     cards.classList.add('d-none');
     form.classList.remove('d-none');
+    addProjectButton.innerHTML = 'Create project';
+    removeProjectButton.classList.add('d-none');
   };
 
   backButton.onclick = () => {
@@ -134,6 +136,8 @@ const projectScript = () => {
       cards.classList.add('d-none');
       form.classList.remove('d-none');
       // display edit button and delete in form edit
+      addProjectButton.innerHTML = 'Edit project';
+      if (removeProjectButton) removeProjectButton.classList.remove('d-none');
     };
   });
 };
