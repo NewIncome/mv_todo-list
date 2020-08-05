@@ -9,13 +9,19 @@ const initProjectObject = () => {
   localStorage.setItem('Projects', JSON.stringify(projectsJSON));
 };
 
+
 const App = () => {
   const main = document.createElement('main');
   main.setAttribute('id', 'main');
   initProjectObject();
   const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
-  const innerMain = `${ProjectPage(JSONProjects)} ${TaskPage(1, JSONProjects)}`;
-  main.innerHTML = innerMain;
+  const taskContainer = document.createElement('div');
+  taskContainer.classList.add('tasks');
+  const projectContainer = document.createElement('div');
+  projectContainer.classList.add('projects');
+  main.append(projectContainer, taskContainer);
+  projectContainer.innerHTML = ProjectPage(JSONProjects);
+  taskContainer.innerHTML = TaskPage(1, JSONProjects);
   return main;
 };
 

@@ -37,18 +37,16 @@ const formElement = () => `
 `;
 
 const ProjectPage = (projectsArray) => `
-<div class="projects">
-  <!-- CARDS -->
-  <div class="project-cards">
-    <h1 class="title">My Projects</h1>
-    <div class="project-cards-content">
-    ${projectsElements(projectsArray)}  
-      <div class="project-cards-item remove-bottom d-flex" id="add-button"><img src="${addIcon}"
-          alt="plus-icon" id="plus-icon" />
-      </div>
+<!-- CARDS -->
+<div class="project-cards">
+  <h1 class="title">My Projects</h1>
+  <div class="project-cards-content">
+  ${projectsElements(projectsArray)}  
+    <div class="project-cards-item remove-bottom d-flex" id="add-button"><img src="${addIcon}"
+        alt="plus-icon" id="plus-icon" />
     </div>
   </div>
-  ${formElement()}
 </div>
+${formElement()}
 `;
 export default ProjectPage;
