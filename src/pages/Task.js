@@ -80,6 +80,13 @@ const TaskPage = (projectId, projectsArray) => `
     <button id="add-task" class="primary-button">Save</button>
   </form>
 </div>
+
+<!-- TASK FORM -->
+<div id="taskInfoBack" class="hidden">
+  <ul class="taskInfo">
+    ${taskDetails(task)}
+  </ul>
+</div>
 `;
 
 export default TaskPage;

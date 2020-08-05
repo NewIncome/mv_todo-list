@@ -4,4 +4,8 @@ const taskElement = ({ id, title }) => `
   </li>
 `;
 
-export default taskElement;
+const taskDetails = (task) => `
+  task.getTitle
+`;
+
+export default { taskElement, taskDetails };
