@@ -7,7 +7,7 @@ const projectController = (() => {
   const addProject = (title, description) => {
     const newProject = Project(title, description);
     projects.push(newProject);
-    saveToLocalStorage();
+    saveToLocalStorage(projects);
     return newProject;
   };
 
@@ -17,7 +17,7 @@ const projectController = (() => {
     );
     if (index !== -1) {
       projects.splice(index, 1);
-      saveToLocalStorage();
+      saveToLocalStorage(projects);
     }
   };
 
@@ -33,7 +33,7 @@ const projectController = (() => {
     }
     project.setTitle(title || project.getTitle());
     project.setDescription(description || project.getDescription());
-    saveToLocalStorage();
+    saveToLocalStorage(projects);
     return true;
   };
 

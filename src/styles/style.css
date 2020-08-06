@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 * {
-  --primary-color: #0da5f3;
+  --primary-color: #299cfb;
   --primary-light-color: #acd6ff;
   --black-700: #5e5e5e;
   --gray-800: #9197a3;
@@ -34,12 +34,22 @@ body {
 
 .tasks {
   padding: 20px;
-  overflow-y: scroll;
+  overflow-y: auto;
   position: fixed;
   left: 0;
   top: 0;
   height: 95vh;
   margin-left: 38vw;
+  width: 60%;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.tasks h2 {
+  text-align: center;
 }
 
 ::-webkit-scrollbar {
@@ -51,27 +61,23 @@ body {
   font-weight: 700;
 }
 
-.subtitle {
-  font-size: 1.25rem;
-  font-weight: 700;
-}
-
 .d-flex {
   display: flex;
 }
 
 button {
   padding: 1rem 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  border-radius: 0.25rem;
+  border-radius: 1.6rem;
   margin: 0.5rem 0;
   cursor: pointer;
 }
 
 .primary-button {
   border: 0;
-  background-color: var(--primary-light-color);
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .primary-button:focus {
@@ -87,8 +93,35 @@ button {
   outline: none;
 }
 
+button,
+a.link-button {
+  letter-spacing: 0.5px;
+}
+
+a.link-button {
+  color: var(--gray-600);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
 .d-none {
   display: none;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 20%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* PROJECTS */
@@ -158,10 +191,6 @@ button {
 /* FORM-PROJECTS */
 form {
   flex-direction: column;
-  margin-top: 3rem;
-}
-
-.form-cards {
 }
 
 .form-cards-content {
@@ -171,15 +200,40 @@ form {
 form input,
 form textarea {
   margin: 1.5rem 0;
-  border-radius: 0.25rem;
+  border: 0;
+  background-color: var(--gray-300);
+}
+
+form input.primary::placeholder,
+form input.primary {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+form input.secondary::placeholder,
+form input.secondary {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+form textarea::placeholder,
+form textarea {
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 form textarea {
   resize: vertical;
 }
 
-#title {
-  padding: 0.25rem 0;
+form input:focus,
+form textarea:focus {
+  outline: none;
+}
+
+#project-form input,
+#project-form textarea {
+  background-color: #fff;
 }
 
 .navbar-content {
@@ -190,9 +244,139 @@ form textarea {
 
 .arrow-back {
   cursor: pointer;
+  margin-left: 1rem;
 }
 
 .arrow-back i {
   font-size: 2rem;
   margin-left: 1.5vw;
+}
+
+.priority-icons {
+  justify-content: space-around;
+}
+
+.priority-icons-content {
+  text-align: center;
+}
+
+.day-filter {
+  margin: 2rem 0;
+}
+
+.task {
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.task-list {
+  margin-top: 1.5rem;
+}
+
+.bullet {
+  display: inline-block;
+  border: 1px solid #555;
+  border-radius: 6px;
+  height: 10px;
+  margin: 0 10px 4px 0;
+  width: 10px;
+}
+
+.fa {
+  float: right;
+  font-size: 24px;
+}
+
+.fa,
+.far,
+.fas {
+  cursor: pointer;
+}
+
+.fa-circle,
+.fa-check-circle {
+  font-size: 18px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.fa-check-circle {
+  color: #ccc;
+}
+
+.fa-pencil-alt {
+  font-size: 1rem;
+  color: var(--gray-600);
+}
+
+.newTask {
+  background:
+    linear-gradient(#fff, #fff),
+    linear-gradient(#fff, #fff),
+    linear-gradient(#299cfb, #299cfb);
+  background-position: center, center, center;
+  background-repeat: no-repeat;
+  background-size: 6% 55%, 55% 6%, 100% 100%;
+  border-radius: 3.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  position: fixed;
+  bottom: 2rem;
+  right: 2.5rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.scratched {
+  color: #ccc;
+  text-decoration: line-through;
+}
+
+.scratched,
+.unscratched {
+  cursor: pointer;
+}
+
+.formBack {
+  height: 10%;
+  width: 100%;
+}
+
+.bar {
+  background-color: #fff;
+  border-radius: 29px;
+  margin: 2.5rem auto 0;
+  width: 10%;
+  height: 8px;
+}
+
+#taskForm {
+  background: var(--gray-300);
+  margin: 0;
+  height: 90%;
+  border-radius: 1rem;
+  padding: 1rem 3rem;
+}
+
+#taskInfoBack,
+#formDiv {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  background: #75726fd9;
+}
+
+#taskInfoBack { width: 65%; }
+
+.taskInfo {
+  background: var(--gray-300);
+  margin: 0 auto;
+  height: 70%;
+  border-radius: 1rem;
+  padding: 1rem 3rem;
+  width: 80%;
 }

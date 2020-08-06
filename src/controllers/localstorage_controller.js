@@ -1,5 +1,3 @@
-import projectController from './project_controller';
-
 const getTasks = (tasksArray) => {
   const result = [];
   tasksArray.forEach((element) => {
@@ -31,8 +29,8 @@ const ObjectToLocalStorage = (projects) => {
   return projectsArray;
 };
 
-const saveToLocalStorage = () => {
-  const value = ObjectToLocalStorage(projectController.projects);
+const saveToLocalStorage = (projects) => {
+  const value = ObjectToLocalStorage(projects);
   localStorage.setItem('Projects', JSON.stringify(value));
 };
 

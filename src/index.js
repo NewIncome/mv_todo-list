@@ -1,5 +1,7 @@
 import App from './container/App';
-import initPageScript from './functions/initPageScript';
+import { projectScript, taskScript } from './functions/initPageScript';
+
 
 document.getElementById('content').appendChild(App());
-initPageScript();
+projectScript();
+taskScript();

@@ -1,4 +1,5 @@
 import Task from '../model/task';
+import projectController from '../controllers/project_controller';
 import saveToLocalStorage from './localstorage_controller';
 
 const taskController = (() => {
@@ -11,7 +12,7 @@ const taskController = (() => {
   const addTask = (title, description, dueDate, priority = 'low') => {
     const newTask = Task(title, description, dueDate, priority);
     project.setTasks(newTask);
-    saveToLocalStorage();
+    saveToLocalStorage(projectController.projects);
     return newTask;
   };
 
@@ -22,7 +23,7 @@ const taskController = (() => {
     if (taskIndex === -1) return false;
 
     project.getTasks().splice(taskIndex, 1);
-    saveToLocalStorage();
+    saveToLocalStorage(projectController.projects);
     return true;
   };
 
@@ -32,23 +33,20 @@ const taskController = (() => {
     return today;
   };
 
-  const filterToday = (taskDate) =>
-    project.getTasks().filter((task) => {
-      if (task.getDueDate().getYear() === taskDate.getYear()) {
-        if (task.getDueDate().getMonth() === taskDate.getMonth()) {
-          if (task.getDueDate().getDate() === taskDate.getDate())
-            return taskDate;
-        }
+  const filterTaskByDate = (date) => project.getTasks().filter((task) => {
+    if (task.getDueDate().getYear() === date.getYear()) {
+      if (task.getDueDate().getMonth() === date.getMonth()) {
+        if (task.getDueDate().getDate() === date.getDate()) return date;
       }
-      return false;
-    });
+    }
+    return false;
+  });
 
-  const filterUpcoming = () =>
-    project.getTasks().filter((task) => {
-      const upcomingdate = new Date().setDate(new Date().getDate() + 1);
-      if (task.getDueDate() > upcomingdate) return task;
-      return false;
-    });
+  const filterUpcoming = () => project.getTasks().filter((task) => {
+    const upcomingdate = new Date().setDate(new Date().getDate() + 1);
+    if (task.getDueDate() > upcomingdate) return task;
+    return false;
+  });
 
   const findTask = (taskId) => {
     const foundTask = project
@@ -84,7 +82,7 @@ const taskController = (() => {
     removeTask,
     setProject,
     filterUpcoming,
-    filterToday,
+    filterTaskByDate,
     getDateTomorrow,
     editTask,
   };

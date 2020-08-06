@@ -4,9 +4,9 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack --progress -p",
-    "start": "webpack-dev-server --open",
-    "watch": "webpack --progress --watch --mode=production"
+    "build": "webpack --progress -p --mode production",
+    "build:dev": "webpack --mode development",
+    "start": "webpack-dev-server --open"
   },
   "keywords": [],
   "author": "",
