@@ -1,8 +1,27 @@
 import TaskPage from '../pages/Task';
 import task from '../components/task';
 import { taskDetails } from '../components/task';
+import projectController from '../controllers/project_controller';
+import ProjectPage from '../pages/Project';
 
 let globalProjectId = 1;
+let saveProjectFlagProjectForm = true;
+
+const renderPage = (taskRenderProjectId = 0, projectPage = true) => {
+  if (projectPage) {
+    const projectContainer = document.querySelector('.projects');
+    projectContainer.innerHTML = '';
+    const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
+    projectContainer.innerHTML = ProjectPage(JSONProjects);
+    return;
+  }
+
+  const taskContainer = document.querySelector('.tasks');
+  taskContainer.innerHTML = '';
+  const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
+  taskContainer.innerHTML = TaskPage(taskRenderProjectId, JSONProjects);
+};
+
 const taskScript = () => {
   // TASKS
 
@@ -114,6 +133,10 @@ const projectScript = () => {
   const removeProjectButton = document.querySelector('#remove-project');
   const projectCardItems = document.querySelectorAll('.cards-data');
   const options = document.querySelectorAll('.options-icon');
+  const projectTitleInput = document.querySelector('#project-title');
+  const projectDescriptionInput = document.querySelector(
+    '#project-description'
+  );
 
   addButton.onclick = () => {
     cards.classList.add('d-none');
@@ -129,12 +152,22 @@ const projectScript = () => {
 
   addProjectButton.onclick = (e) => {
     e.preventDefault();
-
-    // add/edit projects
-    // if saves
+    if (saveProjectFlagProjectForm) {
+      const savedValue = projectController.addProject(
+        projectTitleInput.value,
+        projectDescriptionInput.value
+      );
+      if (!savedValue) return;
+    } else {
+      console.log('project edit');
+    }
+    renderPage();
     cards.classList.remove('d-none');
     form.classList.add('d-none');
-    // render
+    projectScript();
+
+    // add/edit projects
+
     // display a toast message
   };
 
@@ -156,13 +189,7 @@ const projectScript = () => {
         // getting directly from the element
         console.log(event.target.getAttribute('data-id'));
         //  do things
-        const taskContainer = document.querySelector('.tasks');
-        taskContainer.innerHTML = '';
-        const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
-        taskContainer.innerHTML = TaskPage(
-          +event.target.getAttribute('data-id'),
-          JSONProjects
-        );
+        renderPage(+event.target.getAttribute('data-id'), false);
         taskScript();
         globalProjectId = +event.target.getAttribute('data-id');
       }
@@ -170,15 +197,9 @@ const projectScript = () => {
         // getting directly from the element
         console.log('clicked children ', element.getAttribute('data-id'));
         //  do things
-        const taskContainer = document.querySelector('.tasks');
-        taskContainer.innerHTML = '';
-        const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
-        taskContainer.innerHTML = TaskPage(
-          +element.getAttribute('data-id'),
-          JSONProjects
-        );
+        renderPage(+element.getAttribute('data-id'), false);
         taskScript();
-        globalProjectId = +event.target.getAttribute('data-id');
+        globalProjectId = +element.getAttribute('data-id');
       }
     };
     options[index].onclick = () => {
@@ -187,6 +208,7 @@ const projectScript = () => {
       // display edit button and delete in form edit
       addProjectButton.innerHTML = 'Edit project';
       if (removeProjectButton) removeProjectButton.classList.remove('d-none');
+      saveProjectFlagProjectForm = false;
     };
   });
 };

@@ -27,8 +27,8 @@ const formElement = () => `
     </div>
     <div class="form-cards-content">
       <form class="d-flex" id="project-form">
-      <input type="text" name="title" id="title" placeholder="Project Title..." class="primary"/>
-      <textarea name="description" id="description" cols="30" rows="5" placeholder="Description"></textarea>
+      <input type="text" name="title" id="project-title" placeholder="Project Title..." class="primary"/>
+      <textarea name="description" id="project-description" cols="30" rows="5" placeholder="Description"></textarea>
       <button id="add-project" class="primary-button">Create project/Edit project</button>
       <a id="remove-project" class="link-button">Remove project</a>
       </form>
