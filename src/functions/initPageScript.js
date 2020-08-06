@@ -3,6 +3,7 @@ import task from '../components/task';
 import { taskDetails } from '../components/task';
 
 let globalProjectId = 1;
+
 const taskScript = () => {
   // TASKS
 
@@ -18,23 +19,23 @@ const taskScript = () => {
   const formBack = document.querySelector('.formBack');
   const editTaskBttn = document.querySelector('#add-task');
   const tasks = document.querySelectorAll('.task');
-  const taskInfo = document.querySelector('#taskInfoBack');
+  let taskInfo = document.querySelector('#taskInfoBack');
+  let taskInfoUl = document.querySelector('.taskInfo');
 
   const findProject = (projects, projectId) => {
-    console.log(projects, projectId);
     const project = projects.find((elem) => elem.id === projectId);
     return project || false;
   };
 
   const findTask = (tasks, taskId) => {
-    const foundTask = tasks.find((elem) => elem.id === taskId);
+    const foundTask = tasks.find((elem) => elem.id === +taskId);
     return foundTask || false;
   };
 
   const findTaskObject = (taskId) => {
     const project = findProject(
       JSON.parse(localStorage.getItem('Projects')),
-      globalProjectId
+      globalProjectId,
     );
     const task = findTask(project.tasks, taskId);
     return task;
@@ -42,25 +43,14 @@ const taskScript = () => {
 
   tasks.forEach((task) => {
     task.childNodes[1].onclick = () => {
-      // taskInfo.className = 'unhidden';
-      const formTaskDetails = `
-        <!-- TASK FORM -->
-        <div id="taskInfoBack">
-          <div class="fas formBack">
-            <div class="bar"></div>
-          </div>
-          <ul class="taskInfo">
-            ${taskDetails(findTaskObject(task.getAttribute('data-id')))}
-          </ul>
-        </div>
-      `;
-      document.querySelector('.tasks').innerHTML += formTaskDetails;
-      const taskInfo = document.querySelector('#taskInfoBack');
-      taskInfo.firstElementChild.onclick = () => {
-        taskInfo.className = 'hidden';
-      };
+      taskInfo.className = 'unhidden';
+      taskInfoUl.innerHTML = taskDetails(findTaskObject(task.getAttribute('data-id')));
     };
   });
+
+  taskInfo.firstElementChild.onclick = () => {
+    taskInfo.className = 'hidden';
+  };
 
   bullets.forEach((bullet) => {
     bullet.onclick = () => {
@@ -178,7 +168,7 @@ const projectScript = () => {
           JSONProjects
         );
         taskScript();
-        globalProjectId = +event.target.getAttribute('data-id');
+        globalProjectId = +element.getAttribute('data-id');
       }
     };
     options[index].onclick = () => {
