@@ -45,32 +45,29 @@ const TaskPage = (projectId, projectsArray) => `
     <input type="text" name="title" id="task-title" placeholder="Task Title..." class="primary" />
     <p></p>
     <div class="priority-icons d-flex">
-      <div class="card">
+      <input type="radio" name="priority" value="1" hidden id="low-priority-checks"/>
+      <label class="card" for="low-priority-checks">
         <div class="priority-icons-content">
           <img src="https://img.icons8.com/ios/32/000000/low-priority.png" alt="low" />
-          <!-- low filled
-      <img src="https://img.icons8.com/ios-filled/32/000000/low-priority.png"/> -->
           <p>LOW</p>
         </div>
-      </div>
+      </label>
 
-      <div class="card">
+      <input type="radio" name="priority" hidden value="2"  id="medium-priority-checks" />
+      <label class="card" for="medium-priority-checks">
         <div class="priority-icons-content">
           <img src="https://img.icons8.com/ios/32/000000/medium-priority.png" alt="medium" />
-          <!-- medium ios-filled
-      <img src="https://img.icons8.com/ios-filled/32/000000/medium-priority.png"/> -->
           <p>MEDIUM</p>
+          
         </div>
-      </div>
-
-      <div class="card">
+      </label>
+      <input type="radio" name="priority" hidden value="3"  id="high-priority-button"/>
+      <label class="card" for="high-priority-button">
         <div class="priority-icons-content">
           <img src="https://img.icons8.com/ios/32/000000/high-priority.png" alt="high" />
-          <!-- high filled
-      <img src="https://img.icons8.com/ios-filled/32/000000/high-priority.png"/> -->
           <p>HIGH</p>
         </div>
-      </div>
+      </label>
     </div>
     <input type="date" id="date" autocomplete="off" class="secondary">
     <textarea name="description" id="task-description" cols="30" rows="3" placeholder="Description"></textarea>

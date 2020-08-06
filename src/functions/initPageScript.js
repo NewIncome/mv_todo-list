@@ -6,6 +6,7 @@ import ProjectPage from '../pages/Project';
 
 let globalProjectId = 1;
 let saveProjectFlagProjectForm = true;
+let taskPriority;
 
 const renderPage = (taskRenderProjectId = 0, projectPage = true) => {
   if (projectPage) {
@@ -35,10 +36,51 @@ const taskScript = () => {
   const formDiv = document.querySelector('#formDiv');
   // const taskForm = document.querySelector('#taskForm');
   const formBack = document.querySelector('.formBack');
-  const editTaskBttn = document.querySelector('#add-task');
+  const addTaskButton = document.querySelector('#add-task');
   const tasks = document.querySelectorAll('.task');
-  let taskInfo = document.querySelector('#taskInfoBack');
-  let taskInfoUl = document.querySelector('.taskInfo');
+  const taskInfo = document.querySelector('#taskInfoBack');
+  const taskInfoUl = document.querySelector('.taskInfo');
+  const priorityChecks = document.querySelectorAll('input[name=priority]');
+
+  priorityChecks.forEach((element) => {
+    element.onclick = (e) => {
+      e.preventDefault();
+      const priorityIconElement =
+        element.nextElementSibling.firstElementChild.firstElementChild;
+
+      priorityChecks[0].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+        'src',
+        'https://img.icons8.com/ios/32/000000/low-priority.png'
+      );
+      priorityChecks[1].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+        'src',
+        'https://img.icons8.com/ios/32/000000/medium-priority.png'
+      );
+      priorityChecks[2].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+        'src',
+        'https://img.icons8.com/ios/32/000000/high-priority.png'
+      );
+
+      if (priorityChecks[0].checked) {
+        priorityIconElement.setAttribute(
+          'src',
+          'https://img.icons8.com/ios-filled/32/000000/low-priority.png'
+        );
+      } else if (priorityChecks[1].checked) {
+        priorityIconElement.setAttribute(
+          'src',
+          'https://img.icons8.com/ios-filled/32/000000/medium-priority.png'
+        );
+      } else {
+        priorityIconElement.setAttribute(
+          'src',
+          'https://img.icons8.com/ios-filled/32/000000/high-priority.png'
+        );
+      }
+
+      taskPriority = element.value;
+    };
+  });
 
   const findProject = (projects, projectId) => {
     const project = projects.find((elem) => elem.id === projectId);
@@ -53,7 +95,7 @@ const taskScript = () => {
   const findTaskObject = (taskId) => {
     const project = findProject(
       JSON.parse(localStorage.getItem('Projects')),
-      globalProjectId,
+      globalProjectId
     );
     const task = findTask(project.tasks, taskId);
     return task;
@@ -62,7 +104,9 @@ const taskScript = () => {
   tasks.forEach((task) => {
     task.childNodes[1].onclick = () => {
       taskInfo.className = 'unhidden';
-      taskInfoUl.innerHTML = taskDetails(findTaskObject(task.getAttribute('data-id')));
+      taskInfoUl.innerHTML = taskDetails(
+        findTaskObject(task.getAttribute('data-id'))
+      );
     };
   });
 
@@ -90,7 +134,7 @@ const taskScript = () => {
   });
 
   newTaskBttn.onclick = () => {
-    editTaskBttn.innerHTML = 'Create Task';
+    addTaskButton.innerHTML = 'Create Task';
     formDiv.className = 'unhidden';
   };
 
@@ -102,7 +146,7 @@ const taskScript = () => {
     editIcon.onclick = () => {
       console.log(editIcon.className);
       if (editIcon.className === 'fa fa-pencil-alt') {
-        editTaskBttn.innerHTML = 'Edit Task';
+        addTaskButton.innerHTML = 'Edit Task';
         formDiv.className = 'unhidden';
       } else {
         // editIcon.onclick;

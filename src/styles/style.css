@@ -118,6 +118,7 @@ a.link-button {
   width: 20%;
   padding: 1rem;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .card:hover {
