@@ -1,12 +1,15 @@
+/* eslint-disable no-restricted-globals, no-alert */
 import TaskPage from '../pages/Task';
 import task from '../components/task';
 import { taskDetails } from '../components/task';
 import projectController from '../controllers/project_controller';
 import ProjectPage from '../pages/Project';
+import taskController from '../controllers/task_controller';
 
 let globalProjectId = 1;
 let saveProjectFlagProjectForm = true;
 let taskPriority;
+let taskID;
 
 const renderPage = (taskRenderProjectId = 0, projectPage = true) => {
   if (projectPage) {
@@ -41,6 +44,9 @@ const taskScript = () => {
   const taskInfo = document.querySelector('#taskInfoBack');
   const taskInfoUl = document.querySelector('.taskInfo');
   const priorityChecks = document.querySelectorAll('input[name=priority]');
+  const taskFormTitle = document.querySelector('#task-title');
+  const taskFormDescription = document.querySelector('#task-description');
+  const taskFormDueDate = document.querySelector('#date');
 
   priorityChecks.forEach((element) => {
     element.onclick = (e) => {
@@ -144,17 +150,58 @@ const taskScript = () => {
 
   editIcons.forEach((editIcon) => {
     editIcon.onclick = () => {
+      const projectObject = projectController.projects.find((elem) => elem.getId() === globalProjectId);
+      taskController.setProject(projectObject);
+
       console.log(editIcon.className);
       if (editIcon.className === 'fa fa-pencil-alt') {
         addTaskButton.innerHTML = 'Edit Task';
         formDiv.className = 'unhidden';
+        taskID = editIcon.parentElement.getAttribute('data-id');
       } else {
         // editIcon.onclick;
-        const decision = prompt('Are you sure you want to remove this task?');
-        if (decision != null) editIcon.parentElement.remove();
+        const decision = confirm('Are you sure you want to remove this task?');
+        if (decision) {
+          taskController.removeTask(taskID);
+          editIcon.parentElement.remove();
+        }
       }
     };
   });
+
+  addTaskButton.onclick = (e) => {
+    e.preventDefault();
+
+    const projectObject = projectController.projects.find((elem) => elem.getId() === globalProjectId);
+    taskController.setProject(projectObject);
+
+    console.log('project Object');
+    console.log(projectObject);
+    console.log(globalProjectId);
+    console.log(projectController.projects);
+    if (addTaskButton.innerHTML === 'Create Task') {
+      // create
+      const addedVal = taskController.addTask(
+        taskFormTitle.value,
+        taskFormDescription.value,
+        taskFormDueDate.value,
+        taskPriority,
+      );
+      if (!addedVal) return;
+    } else {
+      // edit
+      const editedVal = taskController.editTask(
+        taskID,
+        taskFormTitle.value,
+        taskFormDescription.value,
+        taskFormDueDate.value,
+        taskPriority,
+      );
+      if (!editedVal) return;
+    }
+    renderPage(globalProjectId, false);
+    taskScript();
+  };
 };
 
 const projectScript = () => {
