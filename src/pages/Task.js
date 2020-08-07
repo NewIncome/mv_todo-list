@@ -18,21 +18,11 @@ const taskElements = (projectId, projectsArray) => {
 const TaskPage = (projectId, projectsArray) => `
 <h2 class="subtitle">ALL TASKS</h2>
 <div id="today" class="day-filter">
-  <h3 class="subtitle">Today</h3>
   <ul id="today-list" class="task-list">
   ${taskElements(projectId, projectsArray)} 
   </ul>
 </div>
-<div id="tomorrow" class="day-filter">
-  <h3 class="subtitle">Tomorrow</h3>
-  <ul id="tomorrow-list" class="task-list">
-  </ul>
-</div>
-<div id="upcoming" class="day-filter">
-  <h3 class="subtitle">Upcoming</h3>
-  <ul id="upcoming-list" class="task-list">
-  </ul>
-</div>
+
 
 <!-- FAB BUTTON ADD TASK -->
 <div class="fas newTask"></div>

@@ -378,6 +378,29 @@ form textarea:focus {
   margin: 0 auto;
   height: 70%;
   border-radius: 1rem;
-  padding: 1rem 3rem;
+  padding: 3rem;
   width: 80%;
+}
+
+.taskInfo-li {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  margin-bottom: 1.5rem;
+}
+
+.taskInfo-li:last-child p {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.priority-high {
+  color: red;
+}
+
+.priority-medium {
+  color: cornflowerblue;
+}
+
+.priority-low {
+  color: greenyellow;
 }
