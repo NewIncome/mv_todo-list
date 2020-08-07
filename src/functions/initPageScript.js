@@ -177,9 +177,16 @@ const taskScript = () => {
     taskFormDescription.value = task.description;
     taskFormDueDate.value = task.dueDate.toString();
 
-    if (task.priority === 'low') priorityChecks[0].checked = true;
-    else if (task.priority === 'medium') priorityChecks[1].checked = true;
-    else priorityChecks[2].checked = true;
+    if (task.priority === 'low') {
+      priorityChecks[0].checked = true;
+      taskPriority = task.priority;
+    } else if (task.priority === 'medium') {
+      priorityChecks[1].checked = true;
+      taskPriority = task.priority;
+    } else {
+      priorityChecks[2].checked = true;
+      taskPriority = task.priority;
+    }
 
     priorityChecks[0].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
       'src',
@@ -253,7 +260,7 @@ const taskScript = () => {
       if (!addedVal) return;
     } else {
       const editedVal = taskController.editTask(
-        taskID,
+        +taskID,
         taskFormTitle.value,
         taskFormDescription.value,
         taskFormDueDate.value,

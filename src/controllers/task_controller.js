@@ -1,5 +1,5 @@
 import Task from '../model/task';
-import projectController from '../controllers/project_controller';
+import projectController from './project_controller';
 import saveToLocalStorage from './localstorage_controller';
 
 const taskController = (() => {
@@ -60,12 +60,11 @@ const taskController = (() => {
     if (!project) {
       return false;
     }
-    // project.setProjectId(); Maybe later...
     project.setTitle(title || project.getTitle());
     project.setDescription(description || project.getDescription());
     project.setDueDate(dueDate || project.getDueDate());
     project.setPriority(priority || project.getPriority());
-    saveToLocalStorage();
+    saveToLocalStorage(projectController.projects);
     return true;
   };
 
