@@ -1,3 +1,5 @@
 node_modules/
 dist/
 .vscode
+layout/
+src/test.js
