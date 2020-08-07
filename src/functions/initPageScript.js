@@ -125,12 +125,9 @@ const taskScript = () => {
 
   bullets.forEach((bullet) => {
     bullet.onclick = () => {
-      // console.log(bullet.getAttribute('data-id'));
       const editIcon = bullet.parentElement.lastElementChild.className;
       const markIcon = bullet.parentElement.firstChild.className;
       const spanText = bullet.nextSibling.className;
-      // console.log(editIcon === 'fa fa-pencil-alt');
-      // console.log(editIcon === 'fa fa-pencil-alt' ? 'fa fa-times-circle' : 'fa fa-pencil-alt');
       bullet.parentElement.lastElementChild.className =
         editIcon === 'fa fa-pencil-alt'
           ? 'fa fa-times-circle'
@@ -142,13 +139,77 @@ const taskScript = () => {
     };
   });
 
+  const cleanInputs = () => {
+    taskFormTitle.value = '';
+    taskFormDescription.value = '';
+    taskFormDueDate.valueAsDate = new Date();
+    priorityChecks[0].checked = false;
+    priorityChecks[1].checked = false;
+    priorityChecks[2].checked = false;
+
+    priorityChecks[0].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+      'src',
+      'https://img.icons8.com/ios/32/000000/low-priority.png'
+    );
+    priorityChecks[1].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+      'src',
+      'https://img.icons8.com/ios/32/000000/medium-priority.png'
+    );
+    priorityChecks[2].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+      'src',
+      'https://img.icons8.com/ios/32/000000/high-priority.png'
+    );
+  };
+
   newTaskBttn.onclick = () => {
     addTaskButton.innerHTML = 'Create Task';
     formDiv.className = 'unhidden';
+    cleanInputs();
   };
 
   formBack.onclick = () => {
     formDiv.className = 'hidden';
+  };
+
+  const getTaskDetailData = (taskID) => {
+    const task = findTaskObject(taskID);
+    taskFormTitle.value = task.title;
+    taskFormDescription.value = task.description;
+    taskFormDueDate.value = task.dueDate.toString();
+
+    if (task.priority === 'low') priorityChecks[0].checked = true;
+    else if (task.priority === 'medium') priorityChecks[1].checked = true;
+    else priorityChecks[2].checked = true;
+
+    priorityChecks[0].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+      'src',
+      'https://img.icons8.com/ios/32/000000/low-priority.png'
+    );
+    priorityChecks[1].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+      'src',
+      'https://img.icons8.com/ios/32/000000/medium-priority.png'
+    );
+    priorityChecks[2].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+      'src',
+      'https://img.icons8.com/ios/32/000000/high-priority.png'
+    );
+
+    if (priorityChecks[0].checked) {
+      priorityChecks[0].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+        'src',
+        'https://img.icons8.com/ios-filled/32/000000/low-priority.png'
+      );
+    } else if (priorityChecks[1].checked) {
+      priorityChecks[1].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+        'src',
+        'https://img.icons8.com/ios-filled/32/000000/medium-priority.png'
+      );
+    } else {
+      priorityChecks[2].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
+        'src',
+        'https://img.icons8.com/ios-filled/32/000000/high-priority.png'
+      );
+    }
   };
 
   editIcons.forEach((editIcon) => {
@@ -162,29 +223,27 @@ const taskScript = () => {
       if (editIcon.className === 'fa fa-pencil-alt') {
         addTaskButton.innerHTML = 'Edit Task';
         formDiv.className = 'unhidden';
-      } else {
-        // editIcon.onclick;
-        const decision = confirm('Are you sure you want to remove this task?');
-        if (decision) {
-          taskController.removeTask(+taskID);
-          editIcon.parentElement.remove();
-          renderPage(); // render projects page
-          renderPage(globalProjectId, false); // render task page
-        }
+        getTaskDetailData(taskID);
+        return;
+      }
+      const decision = confirm('Are you sure you want to remove this task?');
+      if (decision) {
+        taskController.removeTask(+taskID);
+        editIcon.parentElement.remove();
+        renderPage(); // render projects page
+        renderPage(globalProjectId, false); // render task page
       }
     };
   });
 
   addTaskButton.onclick = (e) => {
     e.preventDefault();
-
     const projectObject = projectController.projects.find(
       (elem) => elem.getId() === globalProjectId
     );
     taskController.setProject(projectObject);
 
     if (addTaskButton.innerHTML === 'Create Task') {
-      // create
       const addedVal = taskController.addTask(
         taskFormTitle.value,
         taskFormDescription.value,
@@ -193,7 +252,6 @@ const taskScript = () => {
       );
       if (!addedVal) return;
     } else {
-      // edit
       const editedVal = taskController.editTask(
         taskID,
         taskFormTitle.value,

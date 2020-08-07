@@ -54,7 +54,7 @@ const initProjectObject = () => {
     taskController.addTask(
       'Tickets to Soda Stereo in Quito',
       'Buy 2 VIP tickets to SS concert',
-      new Date().setDate(new Date().getDate() + 6)
+      '2020-08-20'
     );
   } else makeProjectObject(JSON.parse(localStorage.getItem('Projects')));
 };
