@@ -133,7 +133,7 @@ a.link-button {
 
 .project-cards-content {
   display: grid;
-  grid-template-columns: repeat(2, minmax(auto, auto));
+  grid-template-columns: 1fr 1fr;
   font-weight: 600;
   margin: 3rem 0;
 }

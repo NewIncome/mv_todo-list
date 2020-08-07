@@ -1,6 +1,7 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable no-use-before-define */
 /* eslint-disable no-restricted-globals, no-alert */
 import TaskPage from '../pages/Task';
-import task from '../components/task';
 import { taskDetails } from '../components/task';
 import projectController from '../controllers/project_controller';
 import ProjectPage from '../pages/Project';
@@ -11,16 +12,15 @@ let saveProjectFlagProjectForm = true;
 let taskPriority;
 let taskID;
 
-const renderPage = (taskRenderProjectId = 0, projectPage = true) => {
-  if (projectPage) {
-    const projectContainer = document.querySelector('.projects');
-    projectContainer.innerHTML = '';
-    const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
-    projectContainer.innerHTML = ProjectPage(JSONProjects);
-    projectScript();
-    return;
-  }
+const renderProjectPage = () => {
+  const projectContainer = document.querySelector('.projects');
+  projectContainer.innerHTML = '';
+  const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
+  projectContainer.innerHTML = ProjectPage(JSONProjects);
+  projectScript();
+};
 
+const renderTaskPage = (taskRenderProjectId) => {
   const taskContainer = document.querySelector('.tasks');
   taskContainer.innerHTML = '';
   const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
@@ -28,18 +28,15 @@ const renderPage = (taskRenderProjectId = 0, projectPage = true) => {
   taskScript();
 };
 
+const findProject = (projects, projectId) => {
+  const project = projects.find((elem) => elem.id === projectId);
+  return project || false;
+};
 const taskScript = () => {
-  // TASKS
-
-  // const todayList = document.querySelector('#today-list');
-  // const tomorrowList = document.querySelector('#tomorrow-list');
-  // const upcomingList = document.querySelector('#upcoming-list');
-  // const tasks = document.querySelectorAll('');
   const bullets = document.querySelectorAll('.fa-circle');
   const editIcons = document.querySelectorAll('.fa-pencil-alt');
   const newTaskBttn = document.querySelector('.newTask');
   const formDiv = document.querySelector('#formDiv');
-  // const taskForm = document.querySelector('#taskForm');
   const formBack = document.querySelector('.formBack');
   const addTaskButton = document.querySelector('#add-task');
   const tasks = document.querySelectorAll('.task');
@@ -90,11 +87,6 @@ const taskScript = () => {
       taskPriority = element.value;
     };
   });
-
-  const findProject = (projects, projectId) => {
-    const project = projects.find((elem) => elem.id === projectId);
-    return project || false;
-  };
 
   const findTask = (tasks, taskId) => {
     const foundTask = tasks.find((elem) => elem.id === +taskId);
@@ -237,8 +229,8 @@ const taskScript = () => {
       if (decision) {
         taskController.removeTask(+taskID);
         editIcon.parentElement.remove();
-        renderPage(); // render projects page
-        renderPage(globalProjectId, false); // render task page
+        renderProjectPage(); // render projects page
+        renderTaskPage(globalProjectId); // render task page
       }
     };
   });
@@ -269,12 +261,15 @@ const taskScript = () => {
       if (!editedVal) return;
     }
 
-    renderPage();
-    renderPage(globalProjectId, false);
+    renderProjectPage();
+    renderTaskPage(globalProjectId, false);
   };
 };
 
+/* PROJECT SCRIPT */
+
 const projectScript = () => {
+  let localProjectId;
   const cards = document.querySelector('.project-cards');
   const form = document.querySelector('.form-cards');
   const addButton = document.querySelector('#add-button');
@@ -288,11 +283,18 @@ const projectScript = () => {
     '#project-description'
   );
 
+  const cleanInputs = () => {
+    projectTitleInput.value = '';
+    projectDescriptionInput.value = '';
+  };
+
   addButton.onclick = () => {
+    cleanInputs();
     cards.classList.add('d-none');
     form.classList.remove('d-none');
     addProjectButton.innerHTML = 'Create project';
     removeProjectButton.classList.add('d-none');
+    saveProjectFlagProjectForm = true;
   };
 
   backButton.onclick = () => {
@@ -309,26 +311,28 @@ const projectScript = () => {
       );
       if (!savedValue) return;
     } else {
-      console.log('project edit');
+      const projectEdited = projectController.editProject(
+        localProjectId,
+        projectTitleInput.value,
+        projectDescriptionInput.value
+      );
+      if (!projectEdited) return;
     }
-    renderPage();
+    renderProjectPage();
     cards.classList.remove('d-none');
     form.classList.add('d-none');
-
-    // add/edit projects
-
-    // display a toast message
   };
 
   removeProjectButton.onclick = (e) => {
     e.preventDefault();
-    console.log('remove project');
-    // remove projects
-    // if removes
-    cards.classList.remove('d-none');
-    form.classList.add('d-none');
-    // render
-    // display a toast message
+    const decision = confirm('Are you sure you want to remove this project?');
+    if (decision) {
+      projectController.removeProject(localProjectId);
+      renderProjectPage(); // render projects page
+      renderTaskPage(1); // render task page
+      cards.classList.remove('d-none');
+      form.classList.add('d-none');
+    }
   };
 
   projectCardItems.forEach((element, index) => {
@@ -338,7 +342,7 @@ const projectScript = () => {
         // getting directly from the element
         console.log(event.target.getAttribute('data-id'));
         //  do things
-        renderPage(+event.target.getAttribute('data-id'), false);
+        renderTaskPage(+event.target.getAttribute('data-id'));
         taskScript();
         globalProjectId = +event.target.getAttribute('data-id');
       }
@@ -346,7 +350,7 @@ const projectScript = () => {
         // getting directly from the element
         console.log('clicked children ', element.getAttribute('data-id'));
         //  do things
-        renderPage(+element.getAttribute('data-id'), false);
+        renderTaskPage(+element.getAttribute('data-id'));
         taskScript();
         globalProjectId = +element.getAttribute('data-id');
       }
@@ -358,6 +362,14 @@ const projectScript = () => {
       addProjectButton.innerHTML = 'Edit project';
       if (removeProjectButton) removeProjectButton.classList.remove('d-none');
       saveProjectFlagProjectForm = false;
+      const project = findProject(
+        JSON.parse(localStorage.getItem('Projects')),
+        +element.getAttribute('data-id')
+      );
+
+      projectTitleInput.value = project.title;
+      projectDescriptionInput.value = project.description;
+      localProjectId = +element.getAttribute('data-id');
     };
   });
 };
