@@ -13,7 +13,7 @@ const projectController = (() => {
 
   const removeProject = (projectId) => {
     const index = projects.findIndex(
-      (project) => project.getId() === projectId
+      (project) => project.getId() === projectId,
     );
     if (index !== -1) {
       projects.splice(index, 1);

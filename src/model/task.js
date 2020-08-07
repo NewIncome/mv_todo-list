@@ -5,7 +5,7 @@ const Task = (
   description,
   dueDate,
   priority,
-  id = (globalTaskId += 1)
+  id = (globalTaskId += 1),
 ) => {
   const getId = () => id;
   const getTitle = () => title;

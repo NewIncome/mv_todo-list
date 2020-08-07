@@ -51,8 +51,7 @@ const taskScript = () => {
   priorityChecks.forEach((element) => {
     element.onclick = (e) => {
       e.preventDefault();
-      const priorityIconElement =
-        element.nextElementSibling.firstElementChild.firstElementChild;
+      const priorityIconElement = element.nextElementSibling.firstElementChild.firstElementChild;
 
       priorityChecks[0].nextElementSibling.firstElementChild.firstElementChild.setAttribute(
         'src',
@@ -120,14 +119,9 @@ const taskScript = () => {
       const editIcon = bullet.parentElement.lastElementChild.className;
       const markIcon = bullet.parentElement.firstChild.className;
       const spanText = bullet.nextSibling.className;
-      bullet.parentElement.lastElementChild.className =
-        editIcon === 'fa fa-pencil-alt'
-          ? 'fa fa-times-circle'
-          : 'fa fa-pencil-alt';
-      bullet.parentElement.firstChild.className =
-        markIcon === 'far fa-circle' ? 'fas fa-check-circle' : 'far fa-circle';
-      bullet.nextSibling.className =
-        spanText === 'unscratched' ? 'scratched' : 'unscratched';
+      bullet.parentElement.lastElementChild.className = editIcon === 'fa fa-pencil-alt' ? 'fa fa-times-circle' : 'fa fa-pencil-alt';
+      bullet.parentElement.firstChild.className = markIcon === 'far fa-circle' ? 'fas fa-check-circle' : 'far fa-circle';
+      bullet.nextSibling.className = spanText === 'unscratched' ? 'scratched' : 'unscratched';
     };
   });
 
@@ -339,17 +333,11 @@ const projectScript = () => {
     element.onclick = (event) => {
       const origin = event.srcElement || event.target;
       if (origin.tagName && origin.tagName.match(/div/i)) {
-        // getting directly from the element
-        console.log(event.target.getAttribute('data-id'));
-        //  do things
         renderTaskPage(+event.target.getAttribute('data-id'));
         taskScript();
         globalProjectId = +event.target.getAttribute('data-id');
       }
       if (origin.tagName && origin.tagName.match(/p/i)) {
-        // getting directly from the element
-        console.log('clicked children ', element.getAttribute('data-id'));
-        //  do things
         renderTaskPage(+element.getAttribute('data-id'));
         taskScript();
         globalProjectId = +element.getAttribute('data-id');

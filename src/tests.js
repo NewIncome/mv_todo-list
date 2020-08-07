@@ -1,9 +1,6 @@
-// import project from './components/project';
-// import task from './components/task';
 
 const { projectController } = require('./controllers/project_controller');
 const { taskController } = require('./controllers/task_controller');
-// const saveToLocalStorage = require('./controllers/localstorage_controller');
 
 const firstProject = projectController.addProject(
   'Work',

@@ -9,7 +9,7 @@ const projectsElements = (projectsArray) => {
     projectsInnerHTML += projectElement(
       element,
       element.tasks.length,
-      oddLastElem && 'remove-bottom'
+      oddLastElem && 'remove-bottom',
     );
   });
   return projectsInnerHTML;

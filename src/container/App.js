@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import 'css-reset-and-normalize';
 import '../styles/style.css';
 import ProjectPage from '../pages/Project';
@@ -16,7 +17,7 @@ const makeProjectObject = (JSONProjects) => {
         task.title,
         task.description,
         task.dueDate,
-        task.priority
+        task.priority,
       );
       project.setTasks(newTask);
     });
@@ -27,11 +28,11 @@ const initProjectObject = () => {
   if (!localStorage.hasOwnProperty('Projects')) {
     const firstProject = projectController.addProject(
       'Work',
-      'All related with work'
+      'All related with work',
     );
     const secondProject = projectController.addProject(
       'Personal',
-      'Almost my personal dairy'
+      'Almost my personal dairy',
     );
 
     taskController.setProject(firstProject);
@@ -40,13 +41,13 @@ const initProjectObject = () => {
       'Send email intro cold email to Spotify frontend developer',
       "Send email intro cold email to Spotify frontend developer. Don't forget attach the resume",
       '2020-08-15',
-      'high'
+      'high',
     );
 
     taskController.addTask(
       "Check Slack 'last today' channel",
       "Check Slack 'last today' channel, pin an important comment",
-      '2020-08-08'
+      '2020-08-08',
     );
 
     taskController.setProject(secondProject);
@@ -54,7 +55,7 @@ const initProjectObject = () => {
     taskController.addTask(
       'Tickets to Soda Stereo in Quito',
       'Buy 2 VIP tickets to SS concert',
-      '2020-08-20'
+      '2020-08-20',
     );
   } else makeProjectObject(JSON.parse(localStorage.getItem('Projects')));
 };
@@ -64,8 +65,6 @@ const App = () => {
   main.setAttribute('id', 'main');
   initProjectObject();
   const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
-  // projectController.projects = [...JSONProjects];
-  // console.log(projectController.projects);
   const taskContainer = document.createElement('div');
   taskContainer.classList.add('tasks');
   const projectContainer = document.createElement('div');
