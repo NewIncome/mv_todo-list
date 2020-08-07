@@ -17,6 +17,7 @@ const renderPage = (taskRenderProjectId = 0, projectPage = true) => {
     projectContainer.innerHTML = '';
     const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
     projectContainer.innerHTML = ProjectPage(JSONProjects);
+    projectScript();
     return;
   }
 
@@ -24,6 +25,7 @@ const renderPage = (taskRenderProjectId = 0, projectPage = true) => {
   taskContainer.innerHTML = '';
   const JSONProjects = JSON.parse(localStorage.getItem('Projects'));
   taskContainer.innerHTML = TaskPage(taskRenderProjectId, JSONProjects);
+  taskScript();
 };
 
 const taskScript = () => {
@@ -47,6 +49,7 @@ const taskScript = () => {
   const taskFormTitle = document.querySelector('#task-title');
   const taskFormDescription = document.querySelector('#task-description');
   const taskFormDueDate = document.querySelector('#date');
+  taskFormDueDate.valueAsDate = new Date();
 
   priorityChecks.forEach((element) => {
     element.onclick = (e) => {
@@ -150,20 +153,23 @@ const taskScript = () => {
 
   editIcons.forEach((editIcon) => {
     editIcon.onclick = () => {
-      const projectObject = projectController.projects.find((elem) => elem.getId() === globalProjectId);
+      const projectObject = projectController.projects.find(
+        (elem) => elem.getId() === globalProjectId
+      );
       taskController.setProject(projectObject);
 
-      console.log(editIcon.className);
+      taskID = editIcon.parentElement.getAttribute('data-id');
       if (editIcon.className === 'fa fa-pencil-alt') {
         addTaskButton.innerHTML = 'Edit Task';
         formDiv.className = 'unhidden';
-        taskID = editIcon.parentElement.getAttribute('data-id');
       } else {
         // editIcon.onclick;
         const decision = confirm('Are you sure you want to remove this task?');
         if (decision) {
-          taskController.removeTask(taskID);
+          taskController.removeTask(+taskID);
           editIcon.parentElement.remove();
+          renderPage(); // render projects page
+          renderPage(globalProjectId, false); // render task page
         }
       }
     };
@@ -172,20 +178,18 @@ const taskScript = () => {
   addTaskButton.onclick = (e) => {
     e.preventDefault();
 
-    const projectObject = projectController.projects.find((elem) => elem.getId() === globalProjectId);
+    const projectObject = projectController.projects.find(
+      (elem) => elem.getId() === globalProjectId
+    );
     taskController.setProject(projectObject);
 
-    console.log('project Object');
-    console.log(projectObject);
-    console.log(globalProjectId);
-    console.log(projectController.projects);
     if (addTaskButton.innerHTML === 'Create Task') {
       // create
       const addedVal = taskController.addTask(
         taskFormTitle.value,
         taskFormDescription.value,
         taskFormDueDate.value,
-        taskPriority,
+        taskPriority
       );
       if (!addedVal) return;
     } else {
@@ -195,12 +199,13 @@ const taskScript = () => {
         taskFormTitle.value,
         taskFormDescription.value,
         taskFormDueDate.value,
-        taskPriority,
+        taskPriority
       );
       if (!editedVal) return;
     }
+
+    renderPage();
     renderPage(globalProjectId, false);
-    taskScript();
   };
 };
 
@@ -244,7 +249,6 @@ const projectScript = () => {
     renderPage();
     cards.classList.remove('d-none');
     form.classList.add('d-none');
-    projectScript();
 
     // add/edit projects
 

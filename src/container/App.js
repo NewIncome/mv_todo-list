@@ -39,14 +39,14 @@ const initProjectObject = () => {
     taskController.addTask(
       'Send email intro cold email to Spotify frontend developer',
       "Send email intro cold email to Spotify frontend developer. Don't forget attach the resume",
-      new Date().setDate(new Date().getDate() + 5),
+      '2020-08-15',
       'high'
     );
 
     taskController.addTask(
       "Check Slack 'last today' channel",
       "Check Slack 'last today' channel, pin an important comment",
-      new Date().setDate(new Date().getDate() + 1)
+      '2020-08-08'
     );
 
     taskController.setProject(secondProject);
