@@ -68,13 +68,6 @@ const taskController = (() => {
     return true;
   };
 
-  /*
-{
-  "today":[{object tasks},{}],
-  "tomorrow":[tasks array for tomorrow],
-  "nextdays":[tasks array for nextdays],
-}
-*/
 
   return {
     addTask,
@@ -88,6 +81,3 @@ const taskController = (() => {
 })();
 
 export default taskController;
-// module.exports = {
-//   taskController,
-// };

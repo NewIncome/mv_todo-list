@@ -40,5 +40,3 @@ const Task = (
 };
 
 export default Task;
-// exports.task = task;
-// module.exports = Task;

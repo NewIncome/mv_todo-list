@@ -223,8 +223,8 @@ const taskScript = () => {
       if (decision) {
         taskController.removeTask(+taskID);
         editIcon.parentElement.remove();
-        renderProjectPage(); // render projects page
-        renderTaskPage(globalProjectId); // render task page
+        renderProjectPage();
+        renderTaskPage(globalProjectId);
       }
     };
   });
@@ -322,8 +322,8 @@ const projectScript = () => {
     const decision = confirm('Are you sure you want to remove this project?');
     if (decision) {
       projectController.removeProject(localProjectId);
-      renderProjectPage(); // render projects page
-      renderTaskPage(1); // render task page
+      renderProjectPage();
+      renderTaskPage(1);
       cards.classList.remove('d-none');
       form.classList.add('d-none');
     }
@@ -346,7 +346,6 @@ const projectScript = () => {
     options[index].onclick = () => {
       cards.classList.add('d-none');
       form.classList.remove('d-none');
-      // display edit button and delete in form edit
       addProjectButton.innerHTML = 'Edit project';
       if (removeProjectButton) removeProjectButton.classList.remove('d-none');
       saveProjectFlagProjectForm = false;

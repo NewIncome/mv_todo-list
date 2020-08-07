@@ -30,5 +30,3 @@ const Project = (title, description, id = (globalProjectId += 1)) => {
 };
 
 export default Project;
-// exports.project = project;
-// module.exports = Project;
