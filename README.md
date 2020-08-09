@@ -2,7 +2,7 @@
 
 #### This is a ToDo list app, save all your pending tasks to remember, save all your memos and don't forget any important activity. Use this app as you ever you want. 
 
-<div align="center"><img src="https://user-images.githubusercontent.com/24902525/89691065-a668c200-d8cd-11ea-932c-c64cb9139495.png" alt="image" width="900" /></div>
+<div align="center"><img src="https://user-images.githubusercontent.com/24902525/89736673-b6e57d80-da30-11ea-9f9f-f20200700c0b.gif" alt="image" width="900" /></div>
 
 
 
