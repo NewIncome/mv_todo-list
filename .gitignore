@@ -1,2 +1,5 @@
 node_modules/
-dist/
+# dist/
+.vscode
+layout/
+src/tests.js
