@@ -27,7 +27,7 @@
 
 ## Deployed on GitHub pages
 
-Deployed on [GiHub Pages](https://pages.github.com/)  
+Deployed on [GitHub Pages](https://pages.github.com/)  
 
 ## Improvements
 
